@@ -76,6 +76,21 @@
                     \caption{Impulsantwort mit belieben Filterkoeffizienten}
                     \label{fig:./Bilder/Impulsantwort_aufgabe1}
             \end{figure}
+            
+	Dieses Ergebnis sollte mit dem Vergleich des Ergebnisses der MATLAB
+	Buil-in Funktion filter überprüft werden. Das wichtige dabei ist es die
+	Rückkopplungskoeffizienten der filter-Methode im ersten Eintrag zu $1$ und den
+	Rest zu $0$ zu setzen, damit die Funktion des Filters weiter ohne Rückkopplung
+	realisiert werden kann. Mit dem selben Deltaimpuls und den
+	bereits verwendeten Filterkoeffizienten erhalten wir den gleichen Plot:
+	
+	\begin{figure}[H]
+            \centering
+                \includegraphics[scale=0.5, trim = 1cm 6cm 1.5cm 8cm,
+                clip]{./Bilder/Impulsantwort_aufgabe11}
+                    \caption{Impulsantwort mit anhand filter-Methode}
+                    \label{fig:./Bilder/Impulsantwort_aufgabe11}
+            \end{figure}
 	
 \end{quote}
 
