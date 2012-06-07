@@ -65,52 +65,78 @@
     
     \subsection{Vorbereitungsaufgaben zu Termin 5}
     \begin{quote}
-    
-	Als erstes sollte ein FIR-Filter entworfen werden, welches mit der MATLAB
-	Funktion FIRFilterung realisiert wird. Dabei haben wir im Probedurchlauf einen
-	Deltaimpuls verwendet, der durch eine Reihe beliebig gewählter
-	Filterkoeffizienten läuft. Die entstandene Impulsantwort sieht folgendermaßen
-	aus:
+    	
+    	\subsubsection{FIR Filter entwerfen}
+    	\begin{quote}
+		    
+			Als erstes sollte ein FIR-Filter entworfen werden, welches mit der MATLAB
+			Funktion FIRFilterung realisiert wird. Dabei haben wir im Probedurchlauf einen
+			Deltaimpuls verwendet, der durch eine Reihe beliebig gewählter
+			Filterkoeffizienten läuft. Die entstandene Impulsantwort sieht folgendermaßen
+			aus:
+			
+			\begin{figure}[H]
+		            \centering
+		                \includegraphics[scale=0.5, trim = 1cm 6cm 1.5cm 8cm,
+		                clip]{./Bilder/Impulsantwort_aufgabe1}
+		                    \caption{Impulsantwort mit belieben Filterkoeffizienten}
+		                    \label{fig:./Bilder/Impulsantwort_aufgabe1}
+		            \end{figure}
+		            
+			Dieses Ergebnis sollte mit dem Vergleich des Ergebnisses der MATLAB
+			Buil-in Funktion filter überprüft werden. Das wichtige dabei ist es die
+			Rückkopplungskoeffizienten der filter-Methode im ersten Eintrag zu $1$ und den
+			Rest zu $0$ zu setzen, damit die Funktion des Filters weiter ohne Rückkopplung
+			realisiert werden kann. Mit dem selben Deltaimpuls und den
+			bereits verwendeten Filterkoeffizienten erhalten wir den gleichen Plot:
+			
+			\begin{figure}[H]
+		            \centering
+		                \includegraphics[scale=0.5, trim = 1cm 6cm 1.5cm 8cm,
+		                clip]{./Bilder/Impulsantwort_aufgabe11}
+		                    \caption{Impulsantwort mit anhand filter-Methode}
+		                    \label{fig:./Bilder/Impulsantwort_aufgabe11}
+		            \end{figure}
+		       
+		  \end{quote}   
+		  
+		  \subsubsection{FIR Filter nach der Fenstermethode entwerfen}
+		  \begin{quote}
+		            
+		    Danach sollte ein FIR-Filter nach der Fenstermethode entworfen werden. Dabei
+		    wird der Etwurf Schritt für Schritt selber durchgeführt. Die Vorgabe war es,
+		    ein Tiefpass zu bauen, welcher alle Frequenzanteile oberhalb von $1,5 kHz$
+		    mit mindestens $60 dB$ dämpft und Frequenzanteile bis zu einer Grenzfrequenz
+		    von $1 kHz$ mit maximal $3 dB$ dämpft. Die Abtastfrequenz des TP sollte
+		    dabei $15 kHz$ betragen. Untersucht haben wir dabei ein Hanningfenster, ein
+		    Blackmanfenster, ein Hammingfenster und ein Rechteckfenster.
+		    
+		            
+		            
+		  \end{quote}          
+		            
+		  \subsubsection{Nachabtastung}
+		  \begin{quote}
+		            
+		    Nun wurde eine Funktion entworfen, mit der sowohl die digitale Filterung als
+		    auch das Nachabtasten des Signals realisiert wird. Dabei wird nur jeder
+		    fr-ter Wert weiterhin übernommen.  
+		 
+		  \end{quote}
+		  
+		  \subsubsection{Verzicht auf analoges Anti-Aliasing-Filter?}
+		  \begin{quote}
+		  
+		  Zuletzt sollte eine Antwort auf die Frage gegeben werden, ob durch den
+		  Einsatz eines digitalen Filters ganz auf die Verwendung eines analogen
+		  Anti-Aliasing Filters verzichtet werden kann. Die Antwort lautet nein. Durch
+		  korrekte Anpassung des digitalen Filters mit ausreichend hoher Ordnung kann zwar 
+		  Aliasing beim digitalen Filtern vermieden werden, doch braucht man bei der
+		  Digitalisierung des Signals vor der Filterung einen Schutz vor Aliasing,
+		  welcher nur durch ein analoges Anti-Aliasing Filter möglich ist.
+		  
+		  \end{quote}
 	
-	\begin{figure}[H]
-            \centering
-                \includegraphics[scale=0.5, trim = 1cm 6cm 1.5cm 8cm,
-                clip]{./Bilder/Impulsantwort_aufgabe1}
-                    \caption{Impulsantwort mit belieben Filterkoeffizienten}
-                    \label{fig:./Bilder/Impulsantwort_aufgabe1}
-            \end{figure}
-            
-	Dieses Ergebnis sollte mit dem Vergleich des Ergebnisses der MATLAB
-	Buil-in Funktion filter überprüft werden. Das wichtige dabei ist es die
-	Rückkopplungskoeffizienten der filter-Methode im ersten Eintrag zu $1$ und den
-	Rest zu $0$ zu setzen, damit die Funktion des Filters weiter ohne Rückkopplung
-	realisiert werden kann. Mit dem selben Deltaimpuls und den
-	bereits verwendeten Filterkoeffizienten erhalten wir den gleichen Plot:
-	
-	\begin{figure}[H]
-            \centering
-                \includegraphics[scale=0.5, trim = 1cm 6cm 1.5cm 8cm,
-                clip]{./Bilder/Impulsantwort_aufgabe11}
-                    \caption{Impulsantwort mit anhand filter-Methode}
-                    \label{fig:./Bilder/Impulsantwort_aufgabe11}
-            \end{figure}
-            
-    Danach sollte ein FIR-Filter nach der Fenstermethode entworfen werden. Dabei
-    wird der Etwurf Schritt für Schritt selber durchgeführt. Die Vorgabe war es,
-    ein Tiefpass zu bauen, welcher alle Frequenzanteile oberhalb von $1,5 kHz$
-    mit mindestens $60 dB$ dämpft und Frequenzanteile bis zu einer Grenzfrequenz
-    von $1 kHz$ mit maximal $3 dB$ dämpft. Die Abtastfrequenz des TP sollte
-    dabei $15 kHz$ betragen. Untersucht haben wir dabei ein Hanningfenster, ein
-    Blackmanfenster, ein Hammingfenster und ein Rechteckfenster.
-    
-            
-            
-            
-            
-            
-    Nun wurde eine Funktion entworfen, mit der sowohl die digitale Filterung als
-    auch das Nachabtasten des Signals realisiert wird. Dabei wird nur jeder
-    fr-ter Wert weiterhin übernommen.  
 	\end{quote}
 \end{quote}
 
