@@ -63,6 +63,9 @@
 \section{Vorbereitungsaufgaben}
 \begin{quote}
     
+    \subsection{Vorbereitungsaufgaben zu Termin 5}
+    \begin{quote}
+    
 	Als erstes sollte ein FIR-Filter entworfen werden, welches mit der MATLAB
 	Funktion FIRFilterung realisiert wird. Dabei haben wir im Probedurchlauf einen
 	Deltaimpuls verwendet, der durch eine Reihe beliebig gewählter
@@ -91,7 +94,24 @@
                     \caption{Impulsantwort mit anhand filter-Methode}
                     \label{fig:./Bilder/Impulsantwort_aufgabe11}
             \end{figure}
-	
+            
+    Danach sollte ein FIR-Filter nach der Fenstermethode entworfen werden. Dabei
+    wird der Etwurf Schritt für Schritt selber durchgeführt. Die Vorgabe war es,
+    ein Tiefpass zu bauen, welcher alle Frequenzanteile oberhalb von $1,5 kHz$
+    mit mindestens $60 dB$ dämpft und Frequenzanteile bis zu einer Grenzfrequenz
+    von $1 kHz$ mit maximal $3 dB$ dämpft. Die Abtastfrequenz des TP sollte
+    dabei $15 kHz$ betragen. Untersucht haben wir dabei ein Hanningfenster, ein
+    Blackmanfenster, ein Hammingfenster und ein Rechteckfenster.
+    
+            
+            
+            
+            
+            
+    Nun wurde eine Funktion entworfen, mit der sowohl die digitale Filterung als
+    auch das Nachabtasten des Signals realisiert wird. Dabei wird nur jeder
+    fr-ter Wert weiterhin übernommen.  
+	\end{quote}
 \end{quote}
 
 %--------------------------------------------------------------------
@@ -110,6 +130,23 @@
 	            label=lst:Matlab]
 	            {./Matlab/FIRfilterung.m}
 	    \end{quote}
+	    
+	    \subsubsection{Fenstermethode.m}
+	    \begin{quote}
+	        \lstinputlisting[
+	            caption={Fenstermethode},
+	            label=lst:Matlab]
+	            {./Matlab/Fenstermethode.m}
+	    \end{quote}
+	    
+	    \subsubsection{DecimFilt.m}
+	    \begin{quote}
+	        \lstinputlisting[
+	            caption={DecimFilt},
+	            label=lst:Matlab]
+	            {./Matlab/DecimFilt.m}
+	    \end{quote}
+	    
 	\end{quote}
 \end{quote}
 
