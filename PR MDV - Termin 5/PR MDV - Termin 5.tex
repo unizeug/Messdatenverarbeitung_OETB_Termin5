@@ -59,44 +59,43 @@
 %---------------------------------------------------------------------
 %---------------------------------------------------------------------
 
-\TODO{Özgü: nochmal Korrekturlesen, TODOs entfernen, Vollständigkeit beachten}
-\TODO{Boris: Bilder schöner einfügen, auf Gesamtform
-achten, Vollständigkeit beachten}
 
 \section{Vorbereitungsaufgaben}
 \begin{quote}
-    \TODO{Vorbereitungsaufgaben bearbeiten}
+    
+	Als erstes sollte ein FIR-Filter entworfen werden, welches mit der MATLAB
+	Funktion FIRFilterung realisiert wird. Dabei haben wir im Probedurchlauf einen
+	Deltaimpuls verwendet, der durch eine Reihe beliebig gewählter
+	Filterkoeffizienten läuft. Die entstandene Impulsantwort sieht folgendermaßen
+	aus:
 	
-	Zuletzt sollte beantwortet werden, ob es theoretisch möglich ist, ganz auf
-	ein analoges Anti-Aliasing-Filter zu verzichten und stattdessen ein digitales
-	Filter zu verwenden. Die Antwortet darauf lautet nein.\\ 
-	Denn sobald Aliasing bei den Spiegelfrequenz auftritt, kann es weder mit
-	analogen noch digitalen Filtern aufgehoben werden.
-	Daher ist, unabhängig von der Ordnung des digitalen Filters, ein analoges
-	Anti-Aliasing-Filter bei der Digitalisierung des Analogsignals nötig.
-	
-\end{quote}
-
-%--------------------------------------------------------------------
-%--------------------------------------------------------------------
-
-\section{Termin 5: Digitale Filterung I - FIR Filter}
-\begin{quote}
-
+	\begin{figure}[H]
+            \centering
+                \includegraphics[scale=0.5, trim = 1cm 6cm 1.5cm 8cm,
+                clip]{./Bilder/Impulsantwort_aufgabe1}
+                    \caption{Impulsantwort mit belieben Filterkoeffizienten}
+                    \label{fig:./Bilder/Impulsantwort_aufgabe1}
+            \end{figure}
 	
 \end{quote}
 
 %--------------------------------------------------------------------
 %--------------------------------------------------------------------
-
-\section{Termin 6: Digitale Filterung II - Realisierung auf Microcontrollern}
-\begin{quote}
-			
-\end{quote}%Ende section
 %--------------------------------------------------------------------
 %--------------------------------------------------------------------
 \section{Quellcodes}
 \begin{quote}
+
+	\subsection{Codes aus Termin 5}
+	\begin{quote}
+	    \subsubsection{FIRfilterung.m}
+	    \begin{quote}
+	        \lstinputlisting[
+	            caption={FIRfilterung},
+	            label=lst:Matlab]
+	            {./Matlab/FIRfilterung.m}
+	    \end{quote}
+	\end{quote}
 \end{quote}
 
 %--------------------------------------------------------------------
