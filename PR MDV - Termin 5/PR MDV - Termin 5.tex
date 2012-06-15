@@ -162,40 +162,6 @@
         Abschließend werden die noch verbleibenden 5 Nachkommastellen abgeschnitten und das gerundete Ergebniss
         zurückgegeben.
         
-    	
-%     	In der Funktion filterFIr wird die Filterung eines Eingangssignals, welcher
-%     	aus einem Puffer vor dem FIR-Filter entnommen wird. 
-%     	Zunächst werden die integer Variablen i ($16$ Bit), welche eine
-%     	Laufvariable ist, accum ($16$ Bit), welche als Zwischenspeicher dient, und
-%     	val (ebenfalls $16$ Bit), welche im Laufe der Filterung Werte des
-%     	Eingangssignals beinhalten wird. Für den Filtervorgang wird die
-%  		for-Bedingung aufgebaut, welche die Laufvariable i von $0$ bis zu dem Wert
-%  		Filterordnung-$1$ hochlaufen lässt. Für jeden Durchgang wird die if-Bedingung
-%  		überprüft, ob das Ergebnis der Funktion fifoReadWord, dem die Adresse des
-%  		verwendeten Puffers, den Index für ein jeweiliges Wort in dem Puffer und die
-%  		Adresse eines zusätzlichen Speichers, in dem das letzte Wort aus dem Puffer eingeschrieben wird.
-		
-    	
-    	
-%     	uint16_t filterFIR() {
-% 	uint16_t i; //Ganzzahlige 16Bit Laufvariable
-% 	int16_t accum = 0; //Zwischenspeicher 16Bit 
-% 	int16_t val; //Werte 16Bit
-% 
-% 	// calculate output values of the filter
-% 	for(i=0; i<FILTER_ORD; i++) { //
-% 		if(fifoReadWord(&filtInBuf, FILTER_ORD-(i+1), &val)==0) {
-% 			val = (val << 6);
-% 			accum += (((int32_t)FIRkoeff[i]) * val)>>16;
-% 		}
-% 	}
-% 	// delete the oldest value from the buffer
-% 	fifoPopWord(&filtInBuf, &val);
-% 
-% 	// convert to integer values
-% 	return (accum >> 5);	
-% }
-    	
 		
 \end{quote}
 
