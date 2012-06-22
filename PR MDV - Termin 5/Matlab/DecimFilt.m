@@ -21,7 +21,7 @@ function yk=DecimFilt(bk, xk, fr)
 
 y_k_undezi = FIRFilterung( bk, xk ); 
 
-y_k_dezi = zeros(1,floor(length(y_k_undezi/fr)));
+y_k_dezi = zeros(1,floor(length(y_k_undezi)/fr));
 
 i=1;
 n = 1;
