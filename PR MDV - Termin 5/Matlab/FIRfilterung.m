@@ -2,19 +2,19 @@
 
 function [y_k]  = FIRFilterung( b_k, x_k );
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %filename:       FIRFilterung.m
 %author:         Timo Lausen, Boris Henckell, Özgü Dogan
 %organisation:   TU Berlin, Chair of Electronic Measurement 
 %                and Diagnosting Technology
 %project:        MDV PR SS12
 %date:           06.06.2012
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %description:    Filterung mittels FIR
 %input:          Filterkoeffizienten - b_k
 %                Eingangsfolge - x_k    
 %output:         Ausgangssignal gefiltert y_k
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 dummy = 0; %initialisiert Puffer
 N = length(b_k); %bestimmt Filterordnung

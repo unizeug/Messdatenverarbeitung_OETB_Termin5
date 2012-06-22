@@ -64,12 +64,13 @@ AXIS([0 0.025 -3 3]) % Vorbereintungsaufgabe 4.3
 %Darstellung des Amplitudenspektrums
 subplot(3,1,2);
 if LogFlag == 1
-    semilogy(f_DFT, BetragXf,farbe);
+    BetragXflog = 20*log10(BetragXf);
+    plot(f_DFT, BetragXflog,farbe);
 else
     %plot(f_DFT, BetragXf,'-');
     stem(f_DFT,BetragXf,farbe);
 end;
-AXIS([-1000 1000 0 1.6])%für die Vorbereitungsaufgabe 2
+AXIS([-1000 1000 -80 20])%für die Vorbereitungsaufgabe 2
 %Axis([-0.5 0.5 10^(-15) 10^(-5)])%für die Vorbereitungsaufgabe 3
 %ylim ([-30 5])
  title('Amplitudenspektrum');

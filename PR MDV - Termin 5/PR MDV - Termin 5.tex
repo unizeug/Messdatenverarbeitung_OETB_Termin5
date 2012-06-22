@@ -69,14 +69,16 @@
     	\subsubsection{FIR Filter entwerfen}
     	\begin{quote}
 		    
-			Als erstes sollte ein FIR-Filter entworfen werden, welches mit der MATLAB
-			Funktion FIRFilterung realisiert wird. Hierbei handelt es sich um eine Funktion, die ein Eingangssignal, das ihr
-			übergeben wird, mit hilfe von Filterkoeffizenten, die ihr auch übergeben werden, filtert.\vspace{1em}
+			In der ersten Aufgabe sollte ein FIR-Filter entworfen werden, welches mit der MATLAB
+			Funktion FIRFilterung realisiert wird. Hierbei handelt es sich um eine Funktion, die ein Eingangssignal mit Hilfe
+			von Filterkoeffizienten filtert. Beides, das Eingangssignal sowie die Filterkoeffizienten werden der Funktion
+			übergeben\vspace{1em}
 			
 			Die Funktion ist im Anhang dieses Protokolls angehängt.\vspace{1em}
 			
-			Um die funktionalität unserer Funktion zu überprüfen haben wir die Funktion getestet. Dazu haben wir einen
-			Deltaimpuls mit einer Reihe beliebig gewählter Filterkoeffizienten filtern lassen. Die entstandene Impulsantwort
+			Um die funktionalität unserer Funktion zu überprüfen haben wir das Ergebnis unserer Funktion mit dem Ergebnis einer
+			schon vorhandenen FIR-Filterfunktion verglichen.\\
+			Dazu haben wir einen Deltaimpuls mit einer Reihe beliebig gewählter Filterkoeffizienten filtern lassen. Die entstandene Impulsantwort
 			sieht folgendermaßen aus:
 			
 			\begin{figure}[H]
@@ -87,17 +89,14 @@
 		                    \label{fig:./Bilder/Impulsantwort_aufgabe1}
 		            \end{figure}
 		            
-			Dieses Ergebnis vergeleichen wir mit dem Ergebniss der MATLAB
-			Buil-in Funktion filter, die wir mit dem selben Deltaimpuls als Eingangssignal und auch den selben
-			Filterkoeffizenten aufrufen.\\
+			Übergeben wir deselben Deltaimpuls und dieselben Filterkoeffizienten der Matlab Funktion ``filter" erhalten wir diese
+			Impulsantwort.
 			
-			\TODO{den nächsten satz nochmal besprechen} \\
-			Hierbei ist zu beachten, dass \ldots\\
+			\TODO{den nächsten satz nochmal besprechen und ggf einbauen} \\
+			Hierbei ist zu beachten, d
 			Das wichtige dabei ist es die Rückkopplungskoeffizienten der filter-Methode im ersten Eintrag zu $1$ und den
 			Rest zu $0$ zu setzen, damit die Funktion des Filters weiter ohne Rückkopplung
 			realisiert werden kann.\\
-			
-			Die Impulsantwort dieser Filterung sieht folgendermaßen aus:
 			
 			\begin{figure}[H]
 		            \centering
@@ -116,18 +115,18 @@
 		  \begin{quote}
 		            
 		    In der nächsten Teil war die Aufgabe einen speziellen FIR-Filter zu Dimensionieren. Das sollten wir mit
-		    Hilfe der Fenstermethode realisiert Schritt für Schritt eigenständig realisiert werden. Die Vorgabe war es,
+		    Hilfe der Fenstermethode Schritt für Schritt eigenständig realisiert. Die Vorgabe war es,
 		    ein Tiefpass zu bauen, welcher alle Frequenzanteile oberhalb von $1,5 kHz$
 		    mit mindestens $60 dB$ dämpft und Frequenzanteile bis zu einer Grenzfrequenz
 		    von $1 kHz$ mit maximal $3 dB$ dämpft. Die Abtastfrequenz des TP sollte
 		    dabei $15 kHz$ betragen.\vspace{1em}
 		     
-		    Im ersten Schritt der Filterdimensionierung legen wir die Wunschfunktion $G_\omega (f))$ im Frequenzbereich fest,
+		    Im ersten Schritt der Filterdimensionierung legen wir die Wunschfunktion $G_\omega (f)$ im Frequenzbereich fest,
 		    die der Filter annehmen soll. In diesem Fall handelt es sich um einen Tiefpass.\\
 		    Im zweiten Schritt transformieren wir diese Wunschfunktion in den Zeitbereich und erstellen damit die gewünschte
-		    Impulsantwort. Über die Impulsantwort lassen sich später die Filterkoeffizenten ablesen. Da es sich bei unserer
-		    Wunschfunktion um einen Tiefpass handelt und dieser schon im Skript umtransformiert wurde nutzen wir diese
-		    gegebene Impulsfolge aus dem Skript.
+		    Impulsantwort. Über die Impulsantwort lassen sich später die Filterkoeffizenten ablesen.\\
+            Da es sich bei unserer Wunschfunktion um einen Tiefpass handelt und dieser schon im Skript umtransformiert
+            wurde nutzen wir diese gegebene Impulsfolge aus dem Skript.
 		    
 		    \begin{equation*}
             	\begin{split}
@@ -145,10 +144,10 @@
 		    sehen ist.
 		    
 		    In der Funktion ``Testfunktion'' haben wir nun die gewünschte Grenzfrequenz und die Filterordnung vorgegeben, uns
-		    die passenden Filterkoeffizienten ausgeben lassen, die Impulsantwort dieses Filters mit Hilfe der Funktion
-		    ``FIRFilterung'' ausgeben lassen, den Amplituden und Phasengang ausgeben lassen und kontrolliert, ob das Filter
-		    mit der angegebenen Ordnung die Vorgaben erfüllt. Falls nicht haben wir so lange die Filterordnung oder die
-		    Fensterung verändert, bis die Vorgaben erfüllt waren.\\
+		    die passenden Filterkoeffizienten sowie die Impulsantwort dieses Filters mit Hilfe der Funktion
+		    ``FIRFilterung'' ausgeben lassen. Anschließend haben wir den Amplituden und Phasengang geplottet und
+		    kontrolliert, ob das Filter mit der angegebenen Ordnung und Fensterung die Vorgaben erfüllt. Falls nicht haben wir
+		    so lange die Filterordnung oder die Fensterung verändert, bis die Vorgaben erfüllt waren.\\
 		    Am Ende haben wir eine Filterordnung von $85$ bei einem Hanningfenster. Der dazugehörige Frequenzgang sieht
 		    folgendermaßen aus:
 		    
@@ -357,11 +356,25 @@
 			\subsubsection{Zusatzaufgabe}
 			\begin{quote}
 			
-			In der Zusatzaufgabe sollte die Zeit gemessen werden, die die Funktion
-			filterFIRDecim benötigt, um einen Wert der Ausgangsfolge zu berechnen. 
-			\TODO{hier muss jemand weiter beschreiben, der Ahnung von dieser Messung
-			hat?!}
+			In der Zusatzaufgabe soll die Zeit gemessen werden, die filterFIRDecim() für einen Durchlauf
+            benötigt. In einem Durchlauf wird eine stelle des messsignals gefiltert und gespeichert. Die vier
+            nachfolgenden Messwerte werden gelöscht.
 			
+			Zuerst muss die Funktion filterFIRDecim() modifiziert werden. Vor Beginn des eigendlichen
+            Durchlaufs wird der Port-Pin PC2 auf high gesetzt. Anschließend wird die Funktion normal
+            ausgeführt. Vor Beendigung wird der Pin PC2 wieder auf low gesetzt. Also ist wird für die
+            Dauer eines Durchlaufs ein High-Impuls generiert. Dieser kann mit dem Oszilloskop gemessen
+            werden.\\
+            
+            \begin{figure}[H]
+            \centering
+                \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{./Bilder/Zusatz.png}
+                    \caption{Messung der Dauer von filterFIRDecim()}
+            \end{figure}
+        
+            Der Funktionsgenerator wird an den Sensorknoten angeschlossen. Das Oszilloskop wird an den  
+            Pin PC2 angeschlossen, um die Impulse messen zu können.
+        			
 			\end{quote}
 			
 			\end{quote}%Ende der Durchführungen von Termin 6
@@ -371,6 +384,106 @@
 
 %--------------------------------------------------------------------
 %--------------------------------------------------------------------
+\section{Auswertung}
+\begin{quote}
+	\subsection{Auswertung Termin 5}
+    \begin{quote}
+        \subsubsection{Auswirkung von Dezimation}
+		\begin{quote}
+			Es wird ein $110Hz$ Rechteck aufgenommen. Die Abtastrate beträgt $15kHz$. um Allaising zu
+            vermeiden, wurde ein Antiallaisingfilter ("die blaue Box") verwendet. Anschließend wird das
+            Amplitudenspektrum bestimmt und geplottet.\\
+        
+            \begin{figure}[H]
+            \centering
+                \includegraphics[scale=0.7, trim = 1.5cm 6.5cm 1cm 7.5cm,
+                clip]{./Bilder/rechteck_100Hz_15kHz_frequenzbegrenzung.pdf}
+                   \caption{aufgenommener Rechteck und sein Spektrum, auf 1kHz begrenzt}
+            \end{figure}
+    
+        
+            Das Spektrum sieht wie erwartet aus. Die Spektramlinien sind klar zu erkennen. Die kleineren
+            Amplituden um die Spektrallinien herrum sind minimale Oberwellen, da perfekte Rechtecke mit der
+            Messkette nicht erfasst werden können. Dennoch ist das Messsignal sehr gut angenähert.\\
+            Nun wird eine Nachabtastung (Dezimation) durchgeführt. Die Nachabtastung erfolgt mit $3kHz$. Dies
+            läuft effektiv darauf hinaus das ein Messwert gespeichert und die folgenden vier gelöscht werden.
+            Nach der Nachabtastung ist also nurnoch ein fünftel der Messwerte vorhanden.\\
+            Auch das nachabgetastete Spektrum wird geplottet.
+            
+            \begin{figure}[H]
+            \centering
+                \includegraphics[scale=0.7, trim = 1.5cm 6.5cm 1cm 7.5cm,
+                clip]{./Bilder/rechteck_100Hz_15kHz_3kHz_nachabgetastet_frequenzbegrenzung.pdf}
+                    \caption{aufgenommener rechteck nach der Nachabtastung}
+            \end{figure}
+  
+            Bei einer diskreten Fourirtransformation erhält man für das Frequenzspektrum genau so viele
+            Stützstellen, wie das Signal Abtastpunkte hat. Daher muss das nachabgetastete Signal nur ein    
+            Fünftel der Spektrallinien haben.\\
+            Auf dem Plot scheint es so, das sich die Anzahl der Spektrallinien nicht geändert hat. Die Änderung 
+            wird aber klar, wenn man beide Spektren mit unbegrenzter Frequenzachse plottet.
+            
+            \begin{figure}[H]
+            \centering
+                \includegraphics[scale=0.7, trim = 1.5cm 6.5cm 1cm 7.5cm,
+                clip]{./Bilder/rechteck_100Hz_15kHz_keine_frequenzbegrenzung.pdf}
+                    \caption{gesamtes Spektrum des afgenommenen Rechtecks}
+            \end{figure}
+        
+            Das Spektrum des nicht nachabgetasteten Signals verläuft bis ca. $7,5kHz$. Allerdings sind die
+            Frequenzanteile in diesen Bereichen so minimal, dass sie in Messfehlern untergehen und keine Aussagekraft haben. Dennoch belegen sie Speicher.\\
+            Diese Spektrallinien können vernachlässigt werden. Daher wird das Signal nachabgetastet.
+            
+            \begin{figure}[H]
+            \centering
+                \includegraphics[scale=0.7, trim = 1.5cm 6.5cm 1cm 7.5cm,
+                clip]{./Bilder/rechteck_100Hz_15kHz_3kHz_nachabgetastet_keine_frequenzbegrenzung.pdf}
+                    \caption{gesamtes Spektrum des nachabgetasteten Signals}
+            \end{figure}
+        
+            Das Spektrum des Nachabgetasteten Signals hat zwischen den einzelnen Spektrallinien den gleichen Abstand wie das Spektrum des 
+            unbearbeiteten Signals. Allerdings fehlen die höheren Frequenzen, da diese nun nicht mehr mit einer Abtastfrequenz erfasst werden 
+            können, die geringer ist als sie selbst. Daher ist das Spektrum des nachabgetasteten Signals nun schmaler als die des ursprünglichen 
+            Messsignals.\\
+        
+            Da die wichtigen Spektrallinien im Bereich bis $1kHz$ liegen wird nun dieser Bereich betrachtet. In der
+            Nachansicht des Spektrums fällt auf, das der Oberwellenanteil im Spektrum leicht gestiegen ist.\\
+            Diese Frequenzanteile entstehen durch die Nachabtastung. Bei der Nachabtastung des $7,5kHz$ Signals, wird
+            das Signal mit einer Frequenz von $3kHz$ abgetastet. Dadurch kommt es zu Allaising. Dies ist aber nicht von
+            Bedeutung, da diese Frequenzanteile sehr gering sind. Die Verfälschung des Spektrums ist sehr klein.
+			
+		\end{quote} % Ende Subsubsection Aufgabe 5.1
+    \end{quote}  % Ende Subsection Auswertung Termin 5
+    
+    \subsection{Auswertung Termin 6}
+    \begin{quote}
+        
+        \subsubsection{Zusatzaufgabe: Messung der Dauer}
+		\begin{quote}
+			Mit Matlab wird eine Messung gestartet. Dadurch wird im Verlauf der Messung mehrfach die 
+            Funktion filterFIRDecim aufgerufen. Dabei wird bei jedem Durchlauf ein impuls erzeugt. Da die
+            Funktion in kurzer Zeit mehrfach hintereinander aufgerufen wird, kann mit dem Oszilloskop ein
+            annähernd periodisches Signal beobachtet werden. Mit der Run/Stop-Taster kann die Messung
+            festgehalten werden. Die Dauer für einen Durchlauf kann nun am Oszilloskop abgelesen
+            werden.\\
+        
+            \begin{figure}[H]
+            \centering
+                \includegraphics[scale=0.2, trim = 0cm 0cm 0cm 0cm, clip]{./Bilder/Foto.jpg}
+                    \caption{Messung mit dem Oszilloskop}
+            \end{figure}
+        
+            Ein Durchlauf von filterFIRDecim dauert $10ms$.
+            
+		\end{quote} % Ende Subsubsection Zusatzaufgabe
+        
+    \end{quote}  % Ende Subsection Auswertung Termin 6
+\end{quote} %Ende section
+
+%--------------------------------------------------------------------
+%--------------------------------------------------------------------    
+
+
 %--------------------------------------------------------------------
 %--------------------------------------------------------------------
 \section{Quellcodes}

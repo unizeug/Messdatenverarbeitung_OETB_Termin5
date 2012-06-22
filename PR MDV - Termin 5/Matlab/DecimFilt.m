@@ -1,8 +1,8 @@
-function yk=DecimFilt(bk, xk, fr)
+function yk=DecimFilt(b_k, x_k, fr)
 % function yk=DecimFilt(bk, xk, fr)
 % ?????????????????????????????????????
 % filename: DecimFilt.m
-% author: ?zg? Dogan, Timo Lausen, Boris Henckell
+% author: Özgü Dogan, Timo Lausen, Boris Henckell
 % organisation : TU Berlin ,
 %
 % project:  MDF PR
@@ -19,17 +19,19 @@ function yk=DecimFilt(bk, xk, fr)
 %
 % ?????????????????????????????????????
 
-y_k_undezi = FIRFilterung( bk, xk ); 
 
-y_k_dezi = zeros(1,floor(length(y_k_undezi)/fr));
+y_k_undezi  = FIRFilterung( b_k, x_k); 
 
-i=1;
-n = 1;
-
-while i <= length(y_k_undezi)
-    y_k_dezi(n) = y_k_undezi(i);
-    n= n+1;
-    i = i + fr;
-end
-
-yk = y_k_dezi;
+ 
+ y_k_dezi = zeros(1,floor(length(y_k_undezi)/fr));
+ 
+ i=1;
+ n = 1;
+ 
+ while i <= length(y_k_undezi)
+     y_k_dezi(n) = y_k_undezi(i);
+     n= n+1;
+     i = i + fr;
+ end
+ 
+ yk = y_k_dezi;
