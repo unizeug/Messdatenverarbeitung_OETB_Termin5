@@ -137,17 +137,22 @@
 		  
 		  \end{quote}
 	
-	\end{quote}
+	\end{quote}%Ende Vorbereitungsaufgaben Termin 5
 	
 	
     \subsection{Vorbereitungsaufgaben zu Termin 6}
     \begin{quote}
     	
+    	Nachdem wir uns mit dem vorgegebenen Tutorial über Fix-Point Arithmetic in
+    	C beschäftigt hatten, sollten folgende Aufgaben zur Vorbereitung des 6.
+    	Termins angefertigt werden.
+    	
     	\subsubsection{Beschreibung der Funktion filterFIR}
     	\begin{quote}
-    	
-    	Die Funktion FilterFIR filtert ein gemessenes Signal. Bei Aufruf wird der n-te Eintrag des gefilterten Signals
-    	ausgegeben und der Index incrementiert.\\
+    	Zuerst wurde die vorgegebene Funktion filterFIR in ihrer Funkionsweise
+    	erklärt:\\ 
+    	Die Funktion filterFIR filtert ein gemessenes Signal. Bei Aufruf
+    	wird der n-te Eintrag des gefilterten Signals ausgegeben und der Index incrementiert.\\
     	Die Filterfunktion ist mit einer for-Schleife realisiert. Folgende Schritte werden innerhalb eines Durchlaufs
     	durchgeführt.\\
     	Zu Beginn wird der n-te Messwert aus dem Buffer geholt. Dieser ursprüngliche Messwert hat 10 Bit und keine
@@ -162,42 +167,159 @@
         Abschließend werden die noch verbleibenden 5 Nachkommastellen abgeschnitten und das gerundete Ergebniss
         zurückgegeben.
         
-    	
-%     	In der Funktion filterFIr wird die Filterung eines Eingangssignals, welcher
-%     	aus einem Puffer vor dem FIR-Filter entnommen wird. 
-%     	Zunächst werden die integer Variablen i ($16$ Bit), welche eine
-%     	Laufvariable ist, accum ($16$ Bit), welche als Zwischenspeicher dient, und
-%     	val (ebenfalls $16$ Bit), welche im Laufe der Filterung Werte des
-%     	Eingangssignals beinhalten wird. Für den Filtervorgang wird die
-%  		for-Bedingung aufgebaut, welche die Laufvariable i von $0$ bis zu dem Wert
-%  		Filterordnung-$1$ hochlaufen lässt. Für jeden Durchgang wird die if-Bedingung
-%  		überprüft, ob das Ergebnis der Funktion fifoReadWord, dem die Adresse des
-%  		verwendeten Puffers, den Index für ein jeweiliges Wort in dem Puffer und die
-%  		Adresse eines zusätzlichen Speichers, in dem das letzte Wort aus dem Puffer eingeschrieben wird.
+		\end{quote}
 		
-    	
-    	
-%     	uint16_t filterFIR() {
-% 	uint16_t i; //Ganzzahlige 16Bit Laufvariable
-% 	int16_t accum = 0; //Zwischenspeicher 16Bit 
-% 	int16_t val; //Werte 16Bit
-% 
-% 	// calculate output values of the filter
-% 	for(i=0; i<FILTER_ORD; i++) { //
-% 		if(fifoReadWord(&filtInBuf, FILTER_ORD-(i+1), &val)==0) {
-% 			val = (val << 6);
-% 			accum += (((int32_t)FIRkoeff[i]) * val)>>16;
-% 		}
-% 	}
-% 	// delete the oldest value from the buffer
-% 	fifoPopWord(&filtInBuf, &val);
-% 
-% 	// convert to integer values
-% 	return (accum >> 5);	
-% }
-    	
+		\subsubsection{Umwandelung der Filterkoeffizienten in das (0,15) Format}
+		\begin{quote}
 		
-\end{quote}
+		Die im vergangenem Praktikum eingestezten Filterkoeffizienten sollten nun in
+		das Q($0,15$) umgewandelt werden. 
+		\TODO{wie genau haben wir das gemacht?}
+		Anschließend verwendeten wir die Funktion exportCoeff() aus der Code-Vorgabe,
+		um die umgewandelten Koeffizienten in eine C-Header Datei filter_coeff.h zu
+		exportieren. Danach wurde mit dieser Datei die gleichnamige Datei aus dem
+		AVRStudio-Projekt ersetzt und die von uns gewählte Ordnungszahl im Header
+		filter.h in die Konstante FILTER_ORD eingesetzt. 
+		
+		\end{quote}
+		
+		\subsection{Methode filterFIRDecim implementieren}
+		\begin{quote}
+		
+		Zuletzt sollte in der Datei filter.c die Methode filterFIRDecim implementiert
+		werden. Diese Methode dient, wie die MATLAB Funktion aus dem 5. Termin zur
+		digitalen Filterung und einer folgenden Abtastung. Die Abtastfrequenz sollte
+		ein fünftel der ursprünglichen Abtastfrequenz betragen. Das Ergebnis dieser
+		Aufgabe ist in den Codes zu sehen.
+		
+		\end{quote}
+	
+	\end{quote}%Ende Vorbereitungsaufgaben zu Termin 6	
+\end{quote}%Ende Vorbereitungsaufgaben
+
+\section{Durchführungen}
+\begin{quote}
+		
+		\subsection{Durchführung zu Termin 5}
+		\begin{quote}
+			
+			Im praktischen Teil des 5. Labortermins, sollte untersucht werden, wie die
+			Abtastrate eines Signals durch Nachabtastung (Dezimation) verringert werden
+			konnte.
+			
+			\subsubsection{Aufnahme eines Rechtecksignals}
+			\begin{quote}
+			
+			Zuerst sollte ein Rechtecksignal aufgenommen werde, welche eine Frequenz von
+			$110 Hz$ besaß. Die Abtastrate betrug $15 kHz$ und es wurde ein analoges
+			Anti-Aliasing Filter verwendet. Danach wurde das Amplitudenspektrum des
+			Signals bestimmt und bis zu einer Frequenz von $1 kHz$ geplottet. 
+			
+			\end{quote}%Ende Aufnahme eines Rechtecksignals
+			
+			\subsubsection{Dezimation des Rechtecksignals}
+			\begin{quote}
+			
+			Nun wurde eine Dezimation durchgeführt, in dem das Signal mittels eines MATLAB
+			Skriptes nochmal mit einer Frequenz von $3 kHz$ abgetastet wurde. Somit
+			erhielten wir jeden fünften Wert aus dem aufgenommenen Signal und konnten
+			die die restlichen Werte verwerfen, wodurch die Datenmenge deutlich
+			verkleinert wurde. Nach der Abtastung wurde erneut das Amplitudenspektrum
+			ermittelt, bis $1 kHz$ dargestellt und mit dem Amplitudenspektrum aus der
+			vorherigen Aufgabe verglichen.
+			
+			\end{quote}%Ende Dezimation des Rechtecksignals
+			
+			\subsubsection{digitale Filterung des Rechtecksignals}
+			\begin{quote}
+			
+			Als nächstes wurde das Rechtecksignal mit dem in der Vorbereitungsaufgabe
+			entworfenem digitalen Filter (zunächst ohne Dezimation) gefiltert und manuell
+			mit der Abtastrate von $3 kHz$ dezimiert. Danach wurde wieder das
+			Amplitudenspektrum bis $1 kHZ$ gebildet und mit den Ergebnissen aus den
+			vorherigen Aufgaben verglichen.
+			
+			\end{quote}%Ende digitale Filterung des Rechtecksignals
+			
+			\subsubsection{Testen der Funktion DecimFilt}
+			\begin{quote}
+			
+			Zuletzt haben wir die ebenfalls in der Vorbereitungsaufgabe entworfene
+			Funktion DecimFilt auf das aufgenommene Rechtecksignal angewendet, wodurch das
+			Signal automatisch erst gefiltert und dann mit der Abtastrate von $3 kHz$
+			dezimiert wurde. Wieder wurde das erzielte Amplitudenspektrum mit den anderen
+			Amplitudenspektren verglichen.
+			
+			\end{quote}%Ende von Testen der Funktion DecimFilt
+
+		\end{quote}%Ende der Durchführung von Termin 5
+		
+		\subsection{Durchführung zu Termin 6}
+		\begin{quote}
+		
+			\subsubsection{Aufnahme des Amplitudenfrequenzgangs}
+			\begin{quote}
+			
+			Zunächst sollte im Praktikum der Amplitudenfrequenzgang des im
+			Microcontroller implementierten FIR-Filters im Bereich von $0$ bis $15 kHz$
+			aufgenommen werden. Dies verwirlichten wir, indem wir von $0 kHz$ angefangen
+			den Effektivwert des gefilterten Signals aufzeichneten , um ihn dann im Bezug
+			zur Frequenz zu plotten.
+			\TODO{welches Eingangssignal wurde nochmal gefiltert? sinus?}
+			Dieser aufgenommene Frequenzgang wurde mit dem in MATLAB berechneten
+			Frequenzgang verglichen. 
+			
+			\end{quote}
+			
+			\subsubsection{Aufnahme eines Rechtecksignals mit zwei Abtastfrequenzen}
+			\begin{quote}
+			
+			Nun wurde ein Rechtecksignal mit einer Frequenz von $110 Hz$ aufgenomemn.
+			Dieses Signal wurde beim ersten Mal mit $3 kHz$ und beim zweiten Mal mit $15
+			kHz$ abgetastet. Als analoges Anti-Aliasing Filter nutzen wir die blaue
+			Wandler-Box, auf eine digtale Filterung sollte verzichtet werden.  
+			
+			\end{quote}			
+			
+			\subsubsection{digitale Filterung und Dezimation des Rechtecksignals}
+			\begin{quote}
+			
+			Das gleiche, mit $15 kHz$ abgetastete Rechtecksignal sollte als nächstes
+			zusätzlich digital gefiltert und mit $3 kHz$ dezimiert werden. Um die
+			Nachabtastung realisieren zu können, mussten wir bei dem Aufruf der Funktion
+			ucAnalogRead, welchen wir aus den Vorgaben entnommen haben, den Parameter für
+			die Dezimierung auf 'ON' setzen. Außerdem war zu beachten, dass die Parameter
+			SampleRate und NumSamples sich auf die Nachabtastung bezogen und
+			dementsprechend angepasst werden mussten. 
+			
+			\end{quote}
+			
+			\subsubsection{Vergleich des Rechtecksignals mit und ohne digitale Filterung
+			und Nachabtastung} 
+			\begin{quote}
+			
+			In dieser Aufgabe sollten die aufgenommenen Rechtecksignal ohne und mit der
+			digitalen Filterung und Nachabtastung im Zeit- und Frequenzbereich
+			miteinander verglichen werden. Um Unterschiede besser wahrnehmen zu können,
+			stellten wir beide Ergebnisse bis zu einer Frequenz von $1 kHz$ dar. Die
+			Plots, sowie die sichtbaren Unterschiede sind in der Auswertung zu sehen. 
+			
+			\end{quote}
+			
+			\subsubsection{Zusatzaufgabe}
+			\begin{quote}
+			
+			In der Zusatzaufgabe sollte die Zeit gemessen werden, die die Funktion
+			filterFIRDecim benötigt, um einen Wert der Ausgangsfolge zu berechnen. 
+			\TODO{hier muss jemand weiter beschreiben, der Ahnung von dieser Messung
+			hat?!}
+			
+			\end{quote}
+			
+			\end{quote}%Ende der Durchführungen von Termin 6
+		
+\end{quote}%Ende Durchführungen
+
 
 %--------------------------------------------------------------------
 %--------------------------------------------------------------------
