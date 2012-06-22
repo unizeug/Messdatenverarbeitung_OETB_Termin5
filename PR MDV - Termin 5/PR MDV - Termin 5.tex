@@ -70,10 +70,14 @@
     	\begin{quote}
 		    
 			Als erstes sollte ein FIR-Filter entworfen werden, welches mit der MATLAB
-			Funktion FIRFilterung realisiert wird. Dabei haben wir im Probedurchlauf einen
-			Deltaimpuls verwendet, der durch eine Reihe beliebig gewählter
-			Filterkoeffizienten läuft. Die entstandene Impulsantwort sieht folgendermaßen
-			aus:
+			Funktion FIRFilterung realisiert wird. Hierbei handelt es sich um eine Funktion, die ein Eingangssignal, das ihr
+			übergeben wird, mit hilfe von Filterkoeffizenten, die ihr auch übergeben werden, filtert.\vspace{1em}
+			
+			Die Funktion ist im Anhang dieses Protokolls angehängt.\vspace{1em}
+			
+			Um die funktionalität unserer Funktion zu überprüfen haben wir die Funktion getestet. Dazu haben wir einen
+			Deltaimpuls mit einer Reihe beliebig gewählter Filterkoeffizienten filtern lassen. Die entstandene Impulsantwort
+			sieht folgendermaßen aus:
 			
 			\begin{figure}[H]
 		            \centering
@@ -83,12 +87,17 @@
 		                    \label{fig:./Bilder/Impulsantwort_aufgabe1}
 		            \end{figure}
 		            
-			Dieses Ergebnis sollte mit dem Vergleich des Ergebnisses der MATLAB
-			Buil-in Funktion filter überprüft werden. Das wichtige dabei ist es die
-			Rückkopplungskoeffizienten der filter-Methode im ersten Eintrag zu $1$ und den
+			Dieses Ergebnis vergeleichen wir mit dem Ergebniss der MATLAB
+			Buil-in Funktion filter, die wir mit dem selben Deltaimpuls als Eingangssignal und auch den selben
+			Filterkoeffizenten aufrufen.\\
+			
+			\TODO{den nächsten satz nochmal besprechen} \\
+			Hierbei ist zu beachten, dass \ldots\\
+			Das wichtige dabei ist es die Rückkopplungskoeffizienten der filter-Methode im ersten Eintrag zu $1$ und den
 			Rest zu $0$ zu setzen, damit die Funktion des Filters weiter ohne Rückkopplung
-			realisiert werden kann. Mit dem selben Deltaimpuls und den
-			bereits verwendeten Filterkoeffizienten erhalten wir den gleichen Plot:
+			realisiert werden kann.\\
+			
+			Die Impulsantwort dieser Filterung sieht folgendermaßen aus:
 			
 			\begin{figure}[H]
 		            \centering
@@ -100,15 +109,45 @@
 		       
 		  \end{quote}   
 		  
+		  Es ist offensichtlich, dass die beiden Funktionen die selbe Impulsantwort besitzen. Daraus schließen wir, dass
+		  unsere Funktion fehlerfrei funktioniert und wir sie im weiteren verlauf verwenden können.
+		  
 		  \subsubsection{FIR Filter nach der Fenstermethode entwerfen}
 		  \begin{quote}
 		            
-		    Danach sollte ein FIR-Filter nach der Fenstermethode entworfen werden. Dabei
-		    wird der Etwurf Schritt für Schritt selber durchgeführt. Die Vorgabe war es,
+		    In der nächsten Teil war die Aufgabe einen speziellen FIR-Filter zu Dimensionieren. Das sollten wir mit
+		    Hilfe der Fenstermethode realisiert Schritt für Schritt eigenständig realisiert werden. Die Vorgabe war es,
 		    ein Tiefpass zu bauen, welcher alle Frequenzanteile oberhalb von $1,5 kHz$
 		    mit mindestens $60 dB$ dämpft und Frequenzanteile bis zu einer Grenzfrequenz
 		    von $1 kHz$ mit maximal $3 dB$ dämpft. Die Abtastfrequenz des TP sollte
-		    dabei $15 kHz$ betragen. Untersucht haben wir dabei ein Hanningfenster, ein
+		    dabei $15 kHz$ betragen.\vspace{1em}
+		     
+		    Im ersten Schritt der Filterdimensionierung legen wir die Wunschfunktion $G_\omega (f))$ im Frequenzbereich fest,
+		    die der Filter annehmen soll. In diesem Fall handelt es sich um einen Tiefpass.\\
+		    Im zweiten Schritt transformieren wir diese Wunschfunktion in den Zeitbereich und erstellen damit die gewünschte
+		    Impulsantwort. Über die Impulsantwort lassen sich später die Filterkoeffizenten ablesen. Da es sich bei unserer
+		    Wunschfunktion um einen Tiefpass handelt und dieser schon im Skript umtransformiert wurde nutzen wir diese
+		    gegebene Impulsfolge aus dem Skript.
+		    
+		    \begin{equation*}
+            	\begin{split}
+            		g_\omega(k) &= \int_{-f_g}^{f_g} G_\omega(f)e^{j2 \pi fkT} \mathrm df = \int_{-f_g}^{f_g} e^{j2\pi
+            		f(kT-\tau)} \matrm df\\
+            		g_\omega(k) &= \frac{sin(2\pi f_g (kT-\tau))}{\pi (kT-\tau)} \text{\ \ \ für \ } -\infty < k < \infty  
+            	\end{split}
+            \end{equation*}
+		     
+		    Da es sich hierbei jedoch um eine Unendliche Reihe handelt und die Impulsantwort des FIR-Filters endlich sein muss
+		    legen wir im dritten Schritt noch ein Fenster über diese Reihe.\\
+		    
+		    Diese Schritt haben wir in den Funktionen ``getFIRTiefpass'' und ``Testfunktion'' realisiert, die im Anhang zu
+		    sehen ist.
+		     
+		    Um diesen Filter zu realisieren schrieben wir die Funktion getFIRTiefpass, die im Anhang zu sehen ist.\\
+		    
+		    
+		    
+		    Untersucht haben wir dabei ein Hanningfenster, ein
 		    Blackmanfenster, ein Hammingfenster und ein Rechteckfenster.
 		    
 		            
@@ -338,12 +377,12 @@
 	            {./Matlab/FIRfilterung.m}
 	    \end{quote}
 	    
-	    \subsubsection{Fenstermethode.m}
+	    \subsubsection{getFIRTiefpass.m}
 	    \begin{quote}
 	        \lstinputlisting[
-	            caption={Fenstermethode},
+	            caption={getFIRTiefpass},
 	            label=lst:Matlab]
-	            {./Matlab/Fenstermethode.m}
+	            {./Matlab/getFIRTiefpass.m}
 	    \end{quote}
 	    
 	    \subsubsection{DecimFilt.m}
