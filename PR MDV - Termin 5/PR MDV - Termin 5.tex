@@ -138,17 +138,26 @@
             \end{equation*}
 		     
 		    Da es sich hierbei jedoch um eine Unendliche Reihe handelt und die Impulsantwort des FIR-Filters endlich sein muss
-		    legen wir im dritten Schritt noch ein Fenster über diese Reihe.\\
+		    legen wir im dritten Schritt noch ein Fenster über diese Reihe. In die Funktion Implementiert haben wir dazu ein
+		    Hanningfenster, ein Blackmanfenster, ein Hammingfenster und ein Rechteckfenster.\\
 		    
 		    Diese Schritt haben wir in den Funktionen ``getFIRTiefpass'' und ``Testfunktion'' realisiert, die im Anhang zu
 		    sehen ist.
-		     
-		    Um diesen Filter zu realisieren schrieben wir die Funktion getFIRTiefpass, die im Anhang zu sehen ist.\\
 		    
+		    In der Funktion ``Testfunktion'' haben wir nun die gewünschte Grenzfrequenz und die Filterordnung vorgegeben, uns
+		    die passenden Filterkoeffizienten ausgeben lassen, die Impulsantwort dieses Filters mit Hilfe der Funktion
+		    ``FIRFilterung'' ausgeben lassen, den Amplituden und Phasengang ausgeben lassen und kontrolliert, ob das Filter
+		    mit der angegebenen Ordnung die Vorgaben erfüllt. Falls nicht haben wir so lange die Filterordnung oder die
+		    Fensterung verändert, bis die Vorgaben erfüllt waren.\\
+		    Am Ende haben wir eine Filterordnung von $85$ bei einem Hanningfenster. Der dazugehörige Frequenzgang sieht
+		    folgendermaßen aus:
 		    
-		    
-		    Untersucht haben wir dabei ein Hanningfenster, ein
-		    Blackmanfenster, ein Hammingfenster und ein Rechteckfenster.
+		    \begin{figure}[H]
+            \centering
+                \includegraphics[scale=0.7, trim = 1cm 6cm 1cm 8cm, clip]{./Bilder/Amplitudengang_FIRFilter}
+                    \caption{Amplitudengang FIR-Filter}
+            \end{figure}
+    
 		    
 		            
 		            
@@ -384,6 +393,14 @@
 	            label=lst:Matlab]
 	            {./Matlab/getFIRTiefpass.m}
 	    \end{quote}
+
+        \subsubsection{Testfunktion.m}
+        \begin{quote}
+            \lstinputlisting[
+                caption={Testfunktion},
+                label=lst:Matlab]
+                {./Matlab/Testfunktion.m}
+        \end{quote}
 	    
 	    \subsubsection{DecimFilt.m}
 	    \begin{quote}

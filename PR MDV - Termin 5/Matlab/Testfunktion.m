@@ -28,8 +28,11 @@ wn1 = ones(N,1);
 wn2 = hanning(N);
 %erstellen eines Blackmanfensters
 wn3 = blackman(N);
+%erstellen eines Hammingfensters
+wn4 = hamming(N);
 
-wn = wn1;
+
+wn = wn3;
 
 y_k = y_k.*wn';
 
@@ -37,8 +40,9 @@ y_k = y_k.*wn';
 y_k_ZP = zeros(2^20,1);
 y_k_ZP(1:length(y_k)) = y_k;
 y_k_DFT = FFTSHIFT(fft(y_k_ZP));
+%y_k_DFT = FFTSHIFT(fft(y_k));
 
-N2 = length(y_k_ZP);
+N2 = length(y_k_DFT);
 
 %Amplitudengang
 f_DFT = (-N2/2:N2/2-1)*Abtastrate/N2;
@@ -56,25 +60,42 @@ y_k_phase = unwrap(angle(y_k_DFT)/sum(1));
 % %plot(x,wn,'r');
 % hold off;
 % grid ();
- title('Zeitsignal');
- xlabel('t/s');
- ylabel('u/V');
+%  title('Impulsantwort');
+%  xlabel('t/s');
+%  ylabel('u/V');
+
+Grenze1=ones(length(f_DFT),1)*-3;
+Grenze2=Grenze1*20;
+Grenze31=1000;
+Grenze32=linspace(-150,0);
+Grenze41=1500;
+Grenze42=Grenze32;
 
 %Frequenzgang
-% figure(12); clc;clf;
-% %Amplitudengang
-% subplot(2,1,1);
-% plot(f_DFT,y_k_DFT_abs);
-%  title('Amplitudenspektrum');
-%  xlabel('f/Hz');
-%  ylabel('A(f)[dB]');  
-% %phasengang
-% subplot(2,1,2);
-% plot(f_DFT,y_k_phase);
-%  title('Phasenspektrum');
-%  xlabel('f/Hz');
-%  ylabel('phi(f)');  
-% grid();
+figure(12); clc;clf;
+%Amplitudengang
+subplot(2,1,1);
+hold on
+    plot(f_DFT,y_k_DFT_abs);
+    plot(f_DFT,Grenze1,'r');
+    plot(f_DFT,Grenze2,'r');
+    plot(Grenze31,Grenze32,'r');
+    plot(Grenze41,Grenze42,'r');
+hold off
+ title('Amplitudenspektrum');
+ xlabel('f/Hz');
+ ylabel('A(f)[dB]');  
+%phasengang
+subplot(2,1,2);
+plot(f_DFT,y_k_phase);
+ title('Phasenspektrum');
+ xlabel('f/Hz');
+ ylabel('phi(f)');  
+grid();
+
+
+
+
 
 %% Filtercoeffizenten exportieren
 
@@ -96,14 +117,14 @@ y_k_DFT_2 = fft(y_k_ZP);
 f_DFT = (0:N2-1)*Abtastrate/N2;
 y_k_DFT_abs_2 = 20*log10(abs(y_k_DFT_2)/sum(1));
    
-    figure(15); 
-    clf();
-    hold on
-    semilogx(f,amp_digi,'r');
-    plot(f_DFT,y_k_DFT_abs_2);
-    LEGEND('Aufgenommener Amplitudengang','Idealer Amplitudengang',3);
-    grid on;
-     title('Amplitudenspektrum');
-    xlabel('f/Hz');
-    ylabel('A(f)[dB]');  
+%     figure(15); 
+%     clf();
+%     hold on
+%     semilogx(f,amp_digi,'r');
+%     plot(f_DFT,y_k_DFT_abs_2);
+%     LEGEND('Aufgenommener Amplitudengang','Idealer Amplitudengang',3);
+%     grid on;
+%      title('Amplitudenspektrum');
+%     xlabel('f/Hz');
+%     ylabel('A(f)[dB]');  
     
