@@ -223,10 +223,10 @@
 		das Q($0,15$) umgewandelt werden. 
 		\TODO{wie genau haben wir das gemacht?}
 		Anschließend verwendeten wir die Funktion exportCoeff() aus der Code-Vorgabe,
-		um die umgewandelten Koeffizienten in eine C-Header Datei filter_coeff.h zu
+		um die umgewandelten Koeffizienten in eine C-Header Datei filter\_coeff.h zu
 		exportieren. Danach wurde mit dieser Datei die gleichnamige Datei aus dem
 		AVRStudio-Projekt ersetzt und die von uns gewählte Ordnungszahl im Header
-		filter.h in die Konstante FILTER_ORD eingesetzt. 
+		filter.h in die Konstante FILTER\_ORD eingesetzt. 
 		
 		\end{quote}
 		
@@ -402,8 +402,8 @@
             \end{figure}
     
         
-            Das Spektrum sieht wie erwartet aus. Die Spektramlinien sind klar zu erkennen. Die kleineren
-            Amplituden um die Spektrallinien herrum sind minimale Oberwellen, da perfekte Rechtecke mit der
+            Das Spektrum sieht wie erwartet aus. Die Spektrallinien sind klar zu
+            erkennen. Die kleineren Amplituden um die Spektrallinien herum sind minimale Oberwellen, da perfekte Rechtecke mit der
             Messkette nicht erfasst werden können. Dennoch ist das Messsignal sehr gut angenähert.\\
             Nun wird eine Nachabtastung (Dezimation) durchgeführt. Die Nachabtastung erfolgt mit $3kHz$. Dies
             läuft effektiv darauf hinaus das ein Messwert gespeichert und die folgenden vier gelöscht werden.
@@ -461,10 +461,11 @@
         \subsubsection{Zusatzaufgabe: Messung der Dauer}
 		\begin{quote}
 			Mit Matlab wird eine Messung gestartet. Dadurch wird im Verlauf der Messung mehrfach die 
-            Funktion filterFIRDecim aufgerufen. Dabei wird bei jedem Durchlauf ein impuls erzeugt. Da die
-            Funktion in kurzer Zeit mehrfach hintereinander aufgerufen wird, kann mit dem Oszilloskop ein
-            annähernd periodisches Signal beobachtet werden. Mit der Run/Stop-Taster kann die Messung
-            festgehalten werden. Die Dauer für einen Durchlauf kann nun am Oszilloskop abgelesen
+            Funktion filterFIRDecim aufgerufen. Dabei wird bei jedem Durchlauf
+            ein Impuls erzeugt. Da die Funktion in kurzer Zeit mehrfach hintereinander aufgerufen wird, 
+            kann mit dem Oszilloskop ein annähernd periodisches Signal
+            beobachtet werden. Mit der Run/Stop-Taster kann die Messung festgehalten werden. 
+            Die Dauer für einen Durchlauf kann nun am Oszilloskop abgelesen
             werden.\\
         
             \begin{figure}[H]
