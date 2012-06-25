@@ -590,9 +590,16 @@
         	klein, um Aussagekraft über das Gesamtsignal zu haben. Mithilfe der
         	Nachabtastung, wie im Praxisteil des 5.Labortermin, können diese
         	Messungen und entsprechenden Spektrallinien vernachlässigt werden.
-        	Daher entspricht auch der Amplitudengang des dezimeirten Signals fast
+        	Daher entspricht auch der Amplitudengang des dezimierten Signals fast
         	dem originalen Amplitudengang, obwohl es nur ein Fünftel des
-        	ursprünglichen Speicherplatzes beansprucht.
+        	ursprünglichen Speicherplatzes beansprucht.\\
+        	Der Einfluss des digitalen Filters ist ebenfalls schwer zu erkennen. Da
+        	der implementierte Filter Frequenzen ab $1kHz$ filtert und wir die
+        	Frequenzachse nur bis $1000 Hz$ darstellen, ist der Einfluss
+        	zunächst nicht sehr deutlich sichtbar. Wenn man sich aber die
+        	Amplituden der Peaks an den äußeren Frequenzen genau anguckt, kann man in der gefilterten Version
+        	tatsächlich eine kleine Dämpfung wahrnehmen, was auf eine korrekte
+        	Filterung zurückführt.
         	
         	\end{quote}
         
