@@ -14,11 +14,11 @@ wn2 = ones(1,length(recht_15kHz));
 fs = 15000;
 
 %% erstellen des Spektrum und plotten
-% Spektrum(recht_3kHz, wn1, fs/5, 0,'b', 11);
-Spektrum(recht_15kHz, wn2, fs, 0,'b', 1);
-Spektrum(recht_15kHz_decim_3kHz, wn2, fs/5, 0,'b', 2);
+Spektrum(recht_3kHz, wn1, fs/5, 0,'b', 1);
+Spektrum(recht_15kHz, wn2, fs, 0,'b', 2);
+% Spektrum(recht_15kHz_decim_3kHz, wn2, fs/5, 0,'b', 2);
 
 figure(1);
-SUPTITLE(['\bf digital ungefiltertes Rechtecksignal', 10]);
+SUPTITLE(['\bf Rechtecksignal mit 3kHz abgetastet', 10]);
 figure(2);
-SUPTITLE(['\bf digital gefiltert und dezimiertes Rechtecksignal', 10]);
+SUPTITLE(['\bf Rechtecksignal mit 15kHz abgetastet', 10]);

@@ -458,30 +458,34 @@
     
     \subsection{Auswertung Termin 6}
     \begin{quote}
-        
-        \subsubsection{Vergleich: ungefiltertes und digital gefiltert und
-        dezimiertes Rechtecksignal}
-        \begin{quote}
-        
-        Das zu Beginn des Praktikums mit $15 kHz$ Abtastfrequenz aufgenommene
-        Rechtecksignal wurde nochmal wie in der Durchführung gemessen, digital
-        gefiltert und einem fünftel der Abtastfrequenz dezimiert. Die Ergebnisse
-        der Zeitsignale und die Spektren zum Vergleich können wir hier sehen:
-        
-        \begin{center}
+    
+        \subsubsection{Amplitudenfrequenzgang des im Microcontroller
+        implementierten FIR-Filters}
+    	\begin{quote}
+    	\TODO{kannst du das einfügen Boris?}
+    	\end{quote}
+    	
+    	
+    	\subsubsection{Aufnahme von zwei Rechtecksignalen}
+    	\begin{quote}
+    	
+    	Das Ergebnis der Messungen von zwei Rechtecksignalen, einmal mit $3kHz$ und
+    	einmal mit $15kHz$ Abtastfrequenz, sind hier zu sehen:
+    	
+    	 \begin{center}
                 \begin{tabular}{ll}
     
-                \hspace{-11em}
+                \hspace{-12em}
                     \begin{minipage}{0.6\textwidth}
     
                         \begin{figure}[H]
                             \label{fig:}
-                            \includegraphics[scale=0.5, trim = 1.5cm 7cm 1.5cm 8.5cm,
-                            clip]{./Bilder/rechteck15kHz_normal}
+                            \includegraphics[scale=0.6, trim = 3cm 9cm 3cm
+                            8.5cm, clip]{./Bilder/6_2_rechteck3kHz}
                             %FIXME [width=640px,
                              %height=474px]
-                            \caption{Zeitsignal und Spektrum des
-                            mit 15kHz aufgenommenen Rechtecksignal}
+                            \caption{Spektrum des aufgenommenen Rechtecksignal
+                            (3kHz)}
                         \end{figure}
     
                     \end{minipage}
@@ -489,11 +493,62 @@
     
                         \begin{figure}[H]
                             \label{fig:}
-                            \includegraphics[scale=0.5, trim = 1.5cm 7cm 1.5cm 8.5cm,
-                            clip]{./Bilder/rechteck15kHz_digifilt+dezi}
+                            \includegraphics[scale=0.6, trim = 3cm 9cm 3cm
+                            8.5cm,
+                            clip]{./Bilder/6_2_rechteck15kHz}
                             %FIXME [width=640px,
                              %height=474px]
-                            \caption{Zeitsignal und Spektrum des digital
+                            \caption{Spektrum des aufgenommenen Rechtecksignals
+                            (15kHz)}
+                        \end{figure}
+                    \vspace{-1.5em}
+    
+                    \end{minipage}
+    
+                \end{tabular}
+                \end{center}
+    			    	
+        	\vspace{1.5em}
+    	
+    	\TODO{Ist es richtig, dass die Signale so aussehen? Müssten die
+    	Zeitsignale nicht gleich sein, da das Rechteck nur 110 Hz hatte?}
+    			
+    	\end{quote}
+    
+        \subsubsection{Vergleich: ungefiltertes und digital gefiltert und
+        dezimiertes Rechtecksignal}
+        \begin{quote}
+        
+        Das in der vorherigen Aufgabe mit $15 kHz$ Abtastfrequenz
+        aufgenommene Rechtecksignal wurde nochmal wie in der Durchführung gemessen, digital
+        gefiltert und einem fünftel der Abtastfrequenz dezimiert. Die Ergebnisse
+        der Zeitsignale und die Spektren zum Vergleich können wir hier sehen:
+        
+        \begin{center}
+                \begin{tabular}{ll}
+    
+                \hspace{-12em}
+                    \begin{minipage}{0.6\textwidth}
+    
+                        \begin{figure}[H]
+                            \label{fig:}
+                            \includegraphics[scale=0.6, trim = 3cm 9cm 3cm
+                            8.5cm, clip]{./Bilder/rechteck15kHz_normal}
+                            %FIXME [width=640px,
+                             %height=474px]
+                            \caption{Spektrum des aufgenommenen Rechtecksignal}
+                        \end{figure}
+    
+                    \end{minipage}
+                    \begin{minipage}{0.6\textwidth}
+    
+                        \begin{figure}[H]
+                            \label{fig:}
+                            \includegraphics[scale=0.6, trim = 3cm 9cm 3cm
+                            8.5cm, clip]{./Bilder/rechteck15kHz_digifilt+dezi}
+                            %FIXME [width=640px,
+                             %height=474px]
+                            \caption{Spektrum des digital
                             gefilterten und dezimierten Rechtecksignals}
                         \end{figure}
                     \vspace{-1.5em}
@@ -502,6 +557,8 @@
     
                 \end{tabular}
                 \end{center}
+    			    	
+        	\vspace{1.5em}
         	
         	Bei der dezimierten Version kann man unschwer erkennen, dass das
         	Zeitsignal und das Betragsspektrum nur einen fünftel an Peaks bzw. high
