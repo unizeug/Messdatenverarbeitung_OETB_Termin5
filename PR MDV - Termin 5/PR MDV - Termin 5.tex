@@ -205,12 +205,13 @@
     	Zu Beginn wird der n-te Messwert aus dem Buffer geholt. Dieser ursprüngliche Messwert hat 10 Bit und keine
     	Nachkommastellen. Um 6 weitere Nachkommastellen zu erhalten wird dieser um 6 Stellen nach links geshiftet. Im
         nächsten Schritt wird der Wert mit dem entsprechenden Filterkoeffizenten multilpliziert. Alle Filterkoeffizenten
-        sind 16 Bit groß haben 15 Nachkommastellen. Bei der multiplikation von zwei 16 Bit Zahlen ergibt sich eine 32
-        Bit Zahl. Das Ergebniss besitzt nach der multiplikation 21 Nachkommastellen. Für die weitere Rechnung werden die
-        letzten 16 Nachkommastellen vernachlässigt. Die Ergebnisse aller multiplikationen werden zum endergebniss
+        sind 16 Bit groß und haben 15 Nachkommastellen. Bei der Multiplikation
+        von zwei 16 Bit Zahlen ergibt sich eine 32 Bit Zahl. Das Ergebniss
+        besitzt nach der Multiplikation 21 Nachkommastellen. Für die weitere Rechnung werden die letzten 16 Nachkommastellen vernachlässigt. 
+        Die Ergebnisse aller Multiplikationen werden zum Endergebniss
         aufaddiert. Daraus resultiert das gefilterte Signals an der Stelle n.\\
-        Nach vollendung wird der n-te Messwert aus dem Speicher gelöscht. Dadurch wird beim nächsten Aufruf der n+1 -te
-        Messwert gefiltert.\\
+        Nach Vollendung wird der n-te Messwert aus dem Speicher gelöscht.
+        Dadurch wird beim nächsten Aufruf der n+1 -te Messwert gefiltert.\\
         Abschließend werden die noch verbleibenden 5 Nachkommastellen abgeschnitten und das gerundete Ergebniss
         zurückgegeben.
         
@@ -414,7 +415,7 @@
             \centering
                 \includegraphics[scale=0.7, trim = 1.5cm 6.5cm 1cm 7.5cm,
                 clip]{./Bilder/rechteck_100Hz_15kHz_3kHz_nachabgetastet_frequenzbegrenzung.pdf}
-                    \caption{aufgenommener rechteck nach der Nachabtastung}
+                    \caption{aufgenommener Rechteck nach der Nachabtastung}
             \end{figure}
   
             Bei einer diskreten Fourirtransformation erhält man für das Frequenzspektrum genau so viele
@@ -427,7 +428,7 @@
             \centering
                 \includegraphics[scale=0.7, trim = 1.5cm 6.5cm 1cm 7.5cm,
                 clip]{./Bilder/rechteck_100Hz_15kHz_keine_frequenzbegrenzung.pdf}
-                    \caption{gesamtes Spektrum des afgenommenen Rechtecks}
+                    \caption{gesamtes Spektrum des aufgenommenen Rechtecks}
             \end{figure}
         
             Das Spektrum des nicht nachabgetasteten Signals verläuft bis ca. $7,5kHz$. Allerdings sind die
