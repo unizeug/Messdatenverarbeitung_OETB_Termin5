@@ -89,14 +89,12 @@
 		                    \label{fig:./Bilder/Impulsantwort_aufgabe1}
 		            \end{figure}
 		            
-			Übergeben wir deselben Deltaimpuls und dieselben Filterkoeffizienten der Matlab Funktion ``filter" erhalten wir diese
-			Impulsantwort.
-			
-			\TODO{den nächsten satz nochmal besprechen und ggf einbauen} \\
-			Hierbei ist zu beachten, d
-			Das wichtige dabei ist es die Rückkopplungskoeffizienten der filter-Methode im ersten Eintrag zu $1$ und den
-			Rest zu $0$ zu setzen, damit die Funktion des Filters weiter ohne Rückkopplung
-			realisiert werden kann.\\
+			Zum Testen übergeben wir nun denselben Deltaimpuls und dieselben Filterkoeffizienten der Funkmtion ``filter'' \ . Da
+			sich mit dieser Funktion auch IIR Filter realisieren lassen benötigt die Funktion neben dem Vektor für
+			die FIR Filterkoeffizienten einen Vektor mit den IIR Koeffizienten. Hierfür erstellen wir einen Vektor mit der selben
+			Länge wie der der FIR Koeffizienten. Als ersten Eintrag wählen wir eine 1 und die restlichen Koeffizenten setzten wir
+			zu 0.\\
+			Die daraus resultierente Impulsantwort sieht folgendermaßen aus.
 			
 			\begin{figure}[H]
 		            \centering
@@ -321,8 +319,9 @@
 			Microcontroller implementierten FIR-Filters im Bereich von $0$ bis $15 kHz$
 			aufgenommen werden. Dies verwirklichten wir, indem wir von $0 kHz$ angefangen
 			den Effektivwert des gefilterten Signals aufzeichneten , um ihn dann im Bezug
-			zur Frequenz zu plotten.
-			\TODO{welches Eingangssignal wurde nochmal gefiltert? sinus?}
+			zur Frequenz zu plotten.\\
+			Da wir bei der Messung den Effektivwert nutzen ist es auch egal ob wir einen Sinussignal oder ein Rechtecksignal
+			verwenden.\\
 			Dieser aufgenommene Frequenzgang wurde mit dem in MATLAB berechneten
 			Frequenzgang verglichen. 
 			
