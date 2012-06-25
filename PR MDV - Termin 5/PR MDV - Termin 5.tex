@@ -203,12 +203,13 @@
     	Zu Beginn wird der n-te Messwert aus dem Buffer geholt. Dieser ursprüngliche Messwert hat $10$ Bit und keine
     	Nachkommastellen. Um $6$ weitere Nachkommastellen zu erhalten wird dieser um 6 Stellen nach links geshiftet. Im
         nächsten Schritt wird der Wert mit dem entsprechenden Filterkoeffizenten multilpliziert. Alle Filterkoeffizenten
-        sind 16 Bit groß haben 15 Nachkommastellen. Bei der multiplikation von zwei 16 Bit Zahlen ergibt sich eine 32
-        Bit Zahl. Das Ergebniss besitzt nach der multiplikation 21 Nachkommastellen. Für die weitere Rechnung werden die
-        letzten 16 Nachkommastellen vernachlässigt. Die Ergebnisse aller multiplikationen werden zum endergebniss
+        sind 16 Bit groß und haben 15 Nachkommastellen. Bei der Multiplikation
+        von zwei 16 Bit Zahlen ergibt sich eine 32 Bit Zahl. Das Ergebniss
+        besitzt nach der Multiplikation 21 Nachkommastellen. Für die weitere Rechnung werden die letzten 16 Nachkommastellen vernachlässigt. 
+        Die Ergebnisse aller Multiplikationen werden zum Endergebniss
         aufaddiert. Daraus resultiert das gefilterte Signals an der Stelle n.\\
-        Nach vollendung wird der n-te Messwert aus dem Speicher gelöscht. Dadurch wird beim nächsten Aufruf der n+1 -te
-        Messwert gefiltert.\\
+        Nach Vollendung wird der n-te Messwert aus dem Speicher gelöscht.
+        Dadurch wird beim nächsten Aufruf der n+1 -te Messwert gefiltert.\\
         Abschließend werden die noch verbleibenden 5 Nachkommastellen abgeschnitten und das gerundete Ergebniss
         zurückgegeben.
         
@@ -221,15 +222,15 @@
 		das Q($0,15$) umgewandelt werden. Dazu haben wir die Koeffizienten, die als Floating Point Zahlen vorhanden waren mit
 		dem Faktor $2^{15}$ multipliziert und als 16 Bit Integer abgespeichert.\\ 
 		Anschließend verwendeten wir die Funktion exportCoeff() aus der Code-Vorgabe,
-		um die umgewandelten Koeffizienten in eine C-Header Datei filter_coeff.h zu
+		um die umgewandelten Koeffizienten in eine C-Header Datei filter\_coeff.h zu
 		exportieren. Danach wurde mit dieser Datei die gleichnamige Datei aus dem
 		AVRStudio-Projekt ersetzt und die von uns gewählte Ordnungszahl im Header
-		filter.h in die Konstante FILTER_ORD eingesetzt. Auf diese Weise implementieren den von uns entworfenen Digitalen
+		filter.h in die Konstante FILTER\_ORD eingesetzt. Auf diese Weise implementieren den von uns entworfenen Digitalen
 		Filter auf dem Mikrocontroller.
 		
 		\end{quote}
 		
-		\subsection{Methode filterFIRDecim implementieren}
+		\subsubsection{Methode filterFIRDecim implementieren}
 		\begin{quote}
 		
 		Zuletzt sollte in der Datei filter.c die Methode filterFIRDecim implementiert
@@ -411,8 +412,8 @@
             \end{figure}
     
         
-            Das Spektrum sieht wie erwartet aus. Die Spektramlinien sind klar zu erkennen. Die kleineren
-            Amplituden um die Spektrallinien herrum sind minimale Oberwellen, da perfekte Rechtecke mit der
+            Das Spektrum sieht wie erwartet aus. Die Spektrallinien sind klar zu
+            erkennen. Die kleineren Amplituden um die Spektrallinien herum sind minimale Oberwellen, da perfekte Rechtecke mit der
             Messkette nicht erfasst werden können. Dennoch ist das Messsignal sehr gut angenähert.\\
             Nun wird eine Nachabtastung (Dezimation) durchgeführt. Die Nachabtastung erfolgt mit $3kHz$. Dies
             läuft effektiv darauf hinaus das ein Messwert gespeichert und die folgenden vier gelöscht werden.
@@ -423,7 +424,7 @@
             \centering
                 \includegraphics[scale=0.7, trim = 1.5cm 6.5cm 1cm 7.5cm,
                 clip]{./Bilder/rechteck_100Hz_15kHz_3kHz_nachabgetastet_frequenzbegrenzung.pdf}
-                    \caption{aufgenommener rechteck nach der Nachabtastung}
+                    \caption{aufgenommener Rechteck nach der Nachabtastung}
             \end{figure}
   
             Bei einer diskreten Fourirtransformation erhält man für das Frequenzspektrum genau so viele
@@ -436,7 +437,7 @@
             \centering
                 \includegraphics[scale=0.7, trim = 1.5cm 6.5cm 1cm 7.5cm,
                 clip]{./Bilder/rechteck_100Hz_15kHz_keine_frequenzbegrenzung.pdf}
-                    \caption{gesamtes Spektrum des afgenommenen Rechtecks}
+                    \caption{gesamtes Spektrum des aufgenommenen Rechtecks}
             \end{figure}
         
             Das Spektrum des nicht nachabgetasteten Signals verläuft bis ca. $7,5kHz$. Allerdings sind die
@@ -466,14 +467,124 @@
     
     \subsection{Auswertung Termin 6}
     \begin{quote}
+    
+        \subsubsection{Amplitudenfrequenzgang des im Microcontroller
+        implementierten FIR-Filters}
+    	\begin{quote}
+    	\TODO{kannst du das einfügen Boris?}
+    	\end{quote}
+    	
+    	
+    	\subsubsection{Aufnahme von zwei Rechtecksignalen}
+    	\begin{quote}
+    	
+    	Das Ergebnis der Messungen von zwei Rechtecksignalen ohne digitale
+    	Filterung, einmal mit $3kHz$ und einmal mit $15kHz$ Abtastfrequenz, sind
+    	hier zu sehen:
+    	
+    	 \begin{center}
+                \begin{tabular}{ll}
+    
+                \hspace{-12em}
+                    \begin{minipage}{0.6\textwidth}
+    
+                        \begin{figure}[H]
+                            \label{fig:}
+                            \includegraphics[scale=0.65, trim = 3cm 9cm 3cm
+                            8.5cm, clip]{./Bilder/6_2_rechteck_3kHz}
+                            %FIXME [width=640px,
+                             %height=474px]
+                            \caption{Spektrum des aufgenommenen Rechtecksignal
+                            (3kHz)}
+                        \end{figure}
+    
+                    \end{minipage}
+                    \begin{minipage}{0.6\textwidth}
+    
+                        \begin{figure}[H]
+                            \label{fig:}
+                            \includegraphics[scale=0.65, trim = 3cm 9cm 3cm
+                            8.5cm,
+                            clip]{./Bilder/6_2_rechteck_15kHz}
+                            %FIXME [width=640px,
+                             %height=474px]
+                            \caption{Spektrum des aufgenommenen Rechtecksignals
+                            (15kHz)}
+                        \end{figure}
+                    \vspace{-1.5em}
+    
+                    \end{minipage}
+    
+                \end{tabular}
+                \end{center}
+    			    	
+        	\vspace{1.5em}
+    	
+    	\TODO{Ist es richtig, dass die Signale so aussehen? Müssten die
+    	Zeitsignale nicht gleich sein, da das Rechteck nur 110 Hz hatte?}
+    			
+    	\end{quote}
+    
+        \subsubsection{Vergleich: ungefiltertes und digital gefiltert und
+        dezimiertes Rechtecksignal}
+        \begin{quote}
+        
+        Das in der vorherigen Aufgabe mit $15 kHz$ Abtastfrequenz
+        aufgenommene Rechtecksignal wurde nochmal wie in der Durchführung gemessen, digital
+        gefiltert und einem fünftel der Abtastfrequenz dezimiert. Die Ergebnisse
+        der Zeitsignale und die Spektren zum Vergleich können wir hier sehen:
+        
+        \begin{center}
+                \begin{tabular}{ll}
+    
+                \hspace{-12em}
+                    \begin{minipage}{0.6\textwidth}
+    
+                        \begin{figure}[H]
+                            \label{fig:}
+                            \includegraphics[scale=0.65, trim = 3cm 9cm 3cm
+                            8.5cm, clip]{./Bilder/rechteck15kHz_normal}
+                            %FIXME [width=640px,
+                             %height=474px]
+                            \caption{Spektrum des aufgenommenen Rechtecksignal}
+                        \end{figure}
+    
+                    \end{minipage}
+                    \begin{minipage}{0.6\textwidth}
+    
+                        \begin{figure}[H]
+                            \label{fig:}
+                            \includegraphics[scale=0.65, trim = 3cm 9cm 3cm
+                            8.5cm, clip]{./Bilder/rechteck15kHz_digifilt+dezi}
+                            %FIXME [width=640px,
+                             %height=474px]
+                            \caption{Spektrum des digital
+                            gefilterten und dezimierten Rechtecksignals}
+                        \end{figure}
+                    \vspace{-1.5em}
+    
+                    \end{minipage}
+    
+                \end{tabular}
+                \end{center}
+    			    	
+        	\vspace{1.5em}
+        	
+        	Bei der dezimierten Version kann man unschwer erkennen, dass das
+        	Zeitsignal und das Betragsspektrum nur einen fünftel an Peaks bzw. high
+        	Signalen liefert, was an der Nachabtastungsfrequenz liegt.
+        	
+        \end{quote}
+        
         
         \subsubsection{Zusatzaufgabe: Messung der Dauer}
 		\begin{quote}
 			Mit Matlab wird eine Messung gestartet. Dadurch wird im Verlauf der Messung mehrfach die 
-            Funktion filterFIRDecim aufgerufen. Dabei wird bei jedem Durchlauf ein impuls erzeugt. Da die
-            Funktion in kurzer Zeit mehrfach hintereinander aufgerufen wird, kann mit dem Oszilloskop ein
-            annähernd periodisches Signal beobachtet werden. Mit der Run/Stop-Taster kann die Messung
-            festgehalten werden. Die Dauer für einen Durchlauf kann nun am Oszilloskop abgelesen
+            Funktion filterFIRDecim aufgerufen. Dabei wird bei jedem Durchlauf
+            ein Impuls erzeugt. Da die Funktion in kurzer Zeit mehrfach hintereinander aufgerufen wird, 
+            kann mit dem Oszilloskop ein annähernd periodisches Signal
+            beobachtet werden. Mit der Run/Stop-Taster kann die Messung festgehalten werden. 
+            Die Dauer für einen Durchlauf kann nun am Oszilloskop abgelesen
             werden.\\
         
             \begin{figure}[H]

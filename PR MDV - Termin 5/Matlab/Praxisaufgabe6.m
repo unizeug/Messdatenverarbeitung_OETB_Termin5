@@ -14,6 +14,6 @@ wn2 = ones(1,length(recht_15kHz));
 fs = 15000;
 
 %% erstellen des Spektrum und plotten
-Spektrum(recht_3kHz, wn1, fs/5, 0,'b', 11);
+% Spektrum(recht_3kHz, wn1, fs/5, 0,'b', 11);
 Spektrum(recht_15kHz, wn2, fs, 0,'b', 12);
 Spektrum(recht_15kHz_decim_3kHz, wn1, fs/5, 0,'b', 13);
