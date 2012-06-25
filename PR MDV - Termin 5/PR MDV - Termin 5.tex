@@ -155,10 +155,7 @@
             \centering
                 \includegraphics[scale=0.7, trim = 1cm 6cm 1cm 8cm, clip]{./Bilder/Amplitudengang_FIRFilter}
                     \caption{Amplitudengang FIR-Filter}
-            \end{figure}
-    
-		    
-		            
+            \end{figure}      
 		            
 		  \end{quote}          
 		            
@@ -167,20 +164,21 @@
 		            
 		    Nun wurde eine Funktion entworfen, mit der sowohl die digitale Filterung als
 		    auch das Nachabtasten des Signals realisiert wird. Dabei wird nur jeder
-		    fr-ter Wert weiterhin übernommen.  
+		    fr-ter Wert weiterhin übernommen.\\
+		    \TODO{Die Umsetzung dieser Nachabtastunf in die Filterungintegrieren} \\
 		 
 		  \end{quote}
 		  
 		  \subsubsection{Verzicht auf analoges Anti-Aliasing-Filter?}
 		  \begin{quote}
 		  
-		  Zuletzt sollte eine Antwort auf die Frage gegeben werden, ob durch den
-		  Einsatz eines digitalen Filters ganz auf die Verwendung eines analogen
-		  Anti-Aliasing Filters verzichtet werden kann. Die Antwort lautet nein. Durch
-		  korrekte Anpassung des digitalen Filters mit ausreichend hoher Ordnung kann zwar 
-		  Aliasing beim digitalen Filtern vermieden werden, doch braucht man bei der
-		  Digitalisierung des Signals vor der Filterung einen Schutz vor Aliasing,
-		  welcher nur durch ein analoges Anti-Aliasing Filter möglich ist.
+    		  Zuletzt sollte eine Antwort auf die Frage gegeben werden, ob durch den
+    		  Einsatz eines digitalen Filters ganz auf die Verwendung eines analogen
+    		  Anti-Aliasing Filters verzichtet werden kann. Die Antwort lautet nein. Durch
+    		  korrekte Anpassung des digitalen Filters mit ausreichend hoher Ordnung kann zwar 
+    		  Aliasing beim digitalen Filtern vermieden werden, doch braucht man bei der
+    		  Digitalisierung des Signals vor der Filterung einen Schutz vor Aliasing,
+    		  welcher nur durch ein analoges Anti-Aliasing Filter möglich ist.
 		  
 		  \end{quote}
 	
@@ -202,8 +200,8 @@
     	wird der n-te Eintrag des gefilterten Signals ausgegeben und der Index incrementiert.\\
     	Die Filterfunktion ist mit einer for-Schleife realisiert. Folgende Schritte werden innerhalb eines Durchlaufs
     	durchgeführt.\\
-    	Zu Beginn wird der n-te Messwert aus dem Buffer geholt. Dieser ursprüngliche Messwert hat 10 Bit und keine
-    	Nachkommastellen. Um 6 weitere Nachkommastellen zu erhalten wird dieser um 6 Stellen nach links geshiftet. Im
+    	Zu Beginn wird der n-te Messwert aus dem Buffer geholt. Dieser ursprüngliche Messwert hat $10$ Bit und keine
+    	Nachkommastellen. Um $6$ weitere Nachkommastellen zu erhalten wird dieser um 6 Stellen nach links geshiftet. Im
         nächsten Schritt wird der Wert mit dem entsprechenden Filterkoeffizenten multilpliziert. Alle Filterkoeffizenten
         sind 16 Bit groß haben 15 Nachkommastellen. Bei der multiplikation von zwei 16 Bit Zahlen ergibt sich eine 32
         Bit Zahl. Das Ergebniss besitzt nach der multiplikation 21 Nachkommastellen. Für die weitere Rechnung werden die
@@ -220,13 +218,14 @@
 		\begin{quote}
 		
 		Die im vergangenem Praktikum eingestezten Filterkoeffizienten sollten nun in
-		das Q($0,15$) umgewandelt werden. 
-		\TODO{wie genau haben wir das gemacht?}
+		das Q($0,15$) umgewandelt werden. Dazu haben wir die Koeffizienten, die als Floating Point Zahlen vorhanden waren mit
+		dem Faktor $2^{15}$ multipliziert und als 16 Bit Integer abgespeichert.\\ 
 		Anschließend verwendeten wir die Funktion exportCoeff() aus der Code-Vorgabe,
 		um die umgewandelten Koeffizienten in eine C-Header Datei filter_coeff.h zu
 		exportieren. Danach wurde mit dieser Datei die gleichnamige Datei aus dem
 		AVRStudio-Projekt ersetzt und die von uns gewählte Ordnungszahl im Header
-		filter.h in die Konstante FILTER_ORD eingesetzt. 
+		filter.h in die Konstante FILTER_ORD eingesetzt. Auf diese Weise implementieren den von uns entworfenen Digitalen
+		Filter auf dem Mikrocontroller.
 		
 		\end{quote}
 		
@@ -236,8 +235,18 @@
 		Zuletzt sollte in der Datei filter.c die Methode filterFIRDecim implementiert
 		werden. Diese Methode dient, wie die MATLAB Funktion aus dem 5. Termin zur
 		digitalen Filterung und einer folgenden Abtastung. Die Abtastfrequenz sollte
-		ein fünftel der ursprünglichen Abtastfrequenz betragen. Das Ergebnis dieser
-		Aufgabe ist in den Codes zu sehen.
+		ein fünftel der ursprünglichen Abtastfrequenz betragen.\\ 
+		Hierfür nutzen wir folgenden Code:
+		
+		    uint16 a1 = filterFIR();\\
+            fifoPopWord(&filtInBuf, &val);\\
+            fifoPopWord(&filtInBuf, &val);\\
+            fifoPopWord(&filtInBuf, &val);\\
+            fifoPopWord(&filtInBuf, &val);\\
+		
+		Wie in der ersten Vorbereitungsaufgabe beschrieben filtert die Funktion filterFIR den ersten Eintrag des gemessenen
+		Signals und löscht anschließend den Messwert. Anschließend werden die auch die folgenden 4 Messwerte gelöscht. Auf
+		diese werden nur $\frac{1}{5}$ der Messwerte gefiltert und das gesamte Signal nachabgetastet.
 		
 		\end{quote}
 	
@@ -309,7 +318,7 @@
 			
 			Zunächst sollte im Praktikum der Amplitudenfrequenzgang des im
 			Microcontroller implementierten FIR-Filters im Bereich von $0$ bis $15 kHz$
-			aufgenommen werden. Dies verwirlichten wir, indem wir von $0 kHz$ angefangen
+			aufgenommen werden. Dies verwirklichten wir, indem wir von $0 kHz$ angefangen
 			den Effektivwert des gefilterten Signals aufzeichneten , um ihn dann im Bezug
 			zur Frequenz zu plotten.
 			\TODO{welches Eingangssignal wurde nochmal gefiltert? sinus?}
