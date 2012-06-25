@@ -10,7 +10,7 @@ wn = ones(1,length(datenu));
 fs = 15000;
 
 %% erstellen des Spektrum und plotten
-Spektrum(datenu, wn, fs, 1,'b', 1);
+Spektrum(datenu, wn, fs, 1,'b',-1000,1000,-70,10, 1);
 
 
 %% dezimierung der Messwerte
@@ -25,10 +25,10 @@ while i <= length(datenu)
     i = i + 5;
 end
 
-Spektrum(y_k_dezi, wn2, fs/5,1,'b',2);
+Spektrum(y_k_dezi, wn2, fs/5,1,'b',-1000,1000,-70,10,2);
 
-%Spektrum(datenu, wn, fs, 0,'r', 3);
-%Spektrum(y_k_dezi, wn, fs/5,0,'b',3);
+%Spektrum(datenu, wn, fs, 0,'r',-1000,1000,-70,10, 3);
+%Spektrum(y_k_dezi, wn, fs/5,0,'b',-1000,1000,-70,10,3);
 
 %% filterung der Daten
 Grenzfrequenz = 1000;
@@ -56,14 +56,26 @@ while i <= length(y_k_gefiltert_undezi)
     i = i + 5;
 end
 
-Spektrum(y_k_gefiltert_dezi, wn2, fs/5,1,'b',4);
+Spektrum(y_k_gefiltert_dezi, wn2, fs/5,1,'b',-1000,1000,-70,10,4);
 
 %% Filtern und nachabtasten 
 
 y_k_alleszusammen=DecimFilt(b_k, datenu, 5);
 
-Spektrum(y_k_alleszusammen, wn2, fs/5,1,'b',5);
+Spektrum(y_k_alleszusammen, wn2, fs/5,1,'b',-1000,1000,-70,10,5);
 
+%% Bilder abspeichern
+%   % mit Axis aufgenommen
+%        figure(1);
+%        print -painters -dpdf -r600 ../Bilder/rechteck_100Hz_15kHz_frequenzbegrenzung.pdf
+%        figure(2);
+%        print -painters -dpdf -r600 ../Bilder/rechteck_100Hz_15kHz_3kHz_nachabgetastet_frequenzbegrenzung.pdf
+  % ohne Axis aufgenommen
+       figure(1);
+       print -painters -dpdf -r600 ../Bilder/rechteck_100Hz_15kHz_keine_frequenzbegrenzung.pdf
+       figure(2);
+       print -painters -dpdf -r600 ../Bilder/rechteck_100Hz_15kHz_3kHz_nachabgetastet_keine_frequenzbegrenzung.pdf
+    
 
 
 %% testbereich
@@ -71,4 +83,4 @@ Spektrum(y_k_alleszusammen, wn2, fs/5,1,'b',5);
 adadadadad = zeros(1,2^9);
 adadadadad(1) = 1;
 
-ergebnis = FIRFilterung(b_k,adadadadad)
+ergebnis = FIRFilterung(b_k,adadadadad);
