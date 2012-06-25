@@ -511,8 +511,10 @@
     			    	
         	\vspace{1.5em}
     	
-    	\TODO{Ist es richtig, dass die Signale so aussehen? Müssten die
-    	Zeitsignale nicht gleich sein, da das Rechteck nur 110 Hz hatte?}
+    	Man kann erkennen, dass beide Zeitsignale fast das gleiche Signal liefern,
+    	wobei die Auflösung beim zweiten durch die höhere Abtastrequenz ein
+    	bisschen besser ist. Da die Eingangssignale sich so ähneln, ist auch das
+    	Amplitudenspektrum beider Messungen fast identisch.
     			
     	\end{quote}
     
@@ -561,11 +563,25 @@
     			    	
         	\vspace{1.5em}
         	
-        	Bei der dezimierten Version kann man unschwer erkennen, dass das
-        	Zeitsignal und das Betragsspektrum nur einen fünftel an Peaks bzw. high
-        	Signalen liefert, was an der Nachabtastungsfrequenz liegt.
+        	Der Erwartung nach, müssten wir im Zeitsignal ein etwas ungenaues
+        	Rechtecksignal in der digital gefilterten und dezimierten
+        	Version erhalten, da prinzipiell nur überflüssige Messwerte aus der
+        	Messreihe gestrichen werden. Diese Erwartung wird erfüllt, da das
+        	dezimierte Rechtecksignal Ungenauigkeiten zeigt.\\
+        	Im Amplitudengang entsteht dementsprechend ein sehr ähnliches Bild wie
+        	bei nicht abgetastetem Signal. Auch hier sieht es so aus, als hätte
+        	sich die Anzahl der Spektrallinien nicht geändert. Dies liegt daran,
+        	dass wir uns beide Spektren nur bis $1kHz$ angucken. Die Spektrallinien
+        	des nichtabgetasteten Signals laufen noch bis zu deutlich höhren
+        	Frequenzen. Diese Frequenzanteile werden aber ab ungefähr $1kHz$ zu
+        	klein, um Aussagekraft über das Gesamtsignal zu haben. Mithilfe der
+        	Nachabtastung, wie im Praxisteil des 5.Labortermin, können diese
+        	Messungen und entsprechenden Spektrallinien vernachlässigt werden.
+        	Daher entspricht auch der Amplitudengang des dezimeirten Signals fast
+        	dem originalen Amplitudengang, obwohl es nur ein Fünftel des
+        	ursprünglichen Speicherplatzes beansprucht.
         	
-        \end{quote}
+        	\end{quote}
         
         
         \subsubsection{Zusatzaufgabe: Messung der Dauer}

@@ -23,4 +23,4 @@ SUPTITLE(['\bf Rechtecksignal mit 3kHz abgetastet', 10]);
 figure(2);
 SUPTITLE(['\bf Rechtecksignal mit 15kHz abgetastet', 10]);
 figure(3);
-SUPTITLE(['\bf Rechtecksignal digital gefiltert und dezimiert']);
+SUPTITLE(['\bf Rechtecksignal digital gefiltert und dezimiert', 10]);
