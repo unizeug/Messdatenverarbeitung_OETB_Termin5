@@ -99,7 +99,7 @@ grid();
 
 %% Filtercoeffizenten exportieren
 
-%  b_k_uebergeben = int16(y_k.*2^15);
+  b_k_uebergeben = int16(y_k.*2^15);
 %  exportCoeff(b_k_uebergeben);
 %  figure(14)
 %  plot(b_k_uebergeben)
