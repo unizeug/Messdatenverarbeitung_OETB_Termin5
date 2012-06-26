@@ -38,7 +38,7 @@ PhaseXf = unwrap(angle(ergebnis2)/N2);
 
 %Zeitachse
 t = 0 :1/fs : (N-1)/fs;
-length(t)
+length(t);
 
 %Frequenzachse
 %f_DFT = fs*2*(0:(N-1))/(N-1);
@@ -53,7 +53,7 @@ plot(t,ergebnis1,farbe);
 %plot(t,wn,'r');
 hold off
 %stem(t,xt);
-AXIS([0 0.025 -3 3]) % Vorbereintungsaufgabe 4.3
+%AXIS([0 0.025 -3 3]) % Vorbereintungsaufgabe 4.3
  title('Zeitsignal');
  xlabel('t/s');
  ylabel('u/V');

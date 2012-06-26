@@ -42,7 +42,7 @@ N = length(b_k); %bestimmt Filterordnung
 %verlaengert das zu filternde Signal
 x_k_neu = [zeros(1,length(b_k)),x_k,zeros(1,length(b_k))];
 %initialisiert das Ausgangssignal
-y_k = zeros(1,length(x_k));
+y_k = zeros(1,length(x_k)/fr);
 %Initialisieren des Arbeitsvektors
 y_k_neu = zeros(1,length(x_k));
 
@@ -57,10 +57,17 @@ for n=N:fr:length(x_k)+N
     %loescht Puffer fuer erneuten Durchlauf
     dummy = 0;
 end
-%kuerzt den Ergebnis-Vektor
-for n=0:1:length(x_k)-1
-    y_k(n+1) = y_k_neu(n+2+length(b_k));
-end 
+
+i=1;
+n = 1;
+
+while i <= length(y_k_neu)
+    y_k(n) = y_k_neu(i);
+    n= n+1;
+    i = i + 5;
+end
+
+y_k(1:N/fr+1) = [];
 
 end
 

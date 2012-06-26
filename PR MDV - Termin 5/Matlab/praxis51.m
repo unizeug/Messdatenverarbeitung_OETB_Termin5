@@ -1,5 +1,8 @@
 % Praxis 51
 %% laden der Daten
+close all;
+clc;
+
 daten = load('5_rechteck_110Hz');
 
 datenu = Code2Volt(daten.rechteck_110Hz);
@@ -43,7 +46,7 @@ b_k = b_k.*wn';
 
 y_k_gefiltert_undezi = FIRFilterung( b_k, datenu );
 
-y_k_gefiltert_undezi(1:Filterordnung) = [];
+%y_k_gefiltert_undezi(1:Filterordnung) = [];
 
 y_k_gefiltert_dezi = zeros(1,floor(length(datenu)/5));
 
@@ -56,13 +59,25 @@ while i <= length(y_k_gefiltert_undezi)
     i = i + 5;
 end
 
+
+length(y_k_gefiltert_dezi)
 Spektrum(y_k_gefiltert_dezi, wn2, fs/5,1,'b',-1000,1000,-70,10,4);
 
 %% Filtern und nachabtasten 
 
 y_k_alleszusammen=DecimFilt(b_k, datenu, 5);
 
-Spektrum(y_k_alleszusammen, wn2, fs/5,1,'b',-1000,1000,-70,10,5);
+wn3 = ones(1,length(y_k_alleszusammen));
+
+Spektrum(y_k_alleszusammen, wn3, fs/5,1,'b',-1000,1000,-70,10,5);
+
+figure(22);
+hold on
+plot(datenu);
+plot(y_k_alleszusammen,'r');
+hold off
+
+
 
 %% Bilder abspeichern
 %   % mit Axis aufgenommen
