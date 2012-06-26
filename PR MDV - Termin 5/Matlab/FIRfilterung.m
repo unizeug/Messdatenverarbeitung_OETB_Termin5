@@ -1,6 +1,6 @@
 %MDV Praktikum 04 FIR-Filter Vorbereitungsaufgaben
 
-function [y_k]  = FIRFilterung( b_k, x_k );
+function [y_k]  = FIRfilterung( b_k, x_k );
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %filename:       FIRFilterung.m
