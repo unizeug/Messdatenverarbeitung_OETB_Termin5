@@ -71,10 +71,10 @@ Spektrum(y_k_alleszusammen, wn2, fs/5,1,'b',-1000,1000,-70,10,5);
 %        figure(2);
 %        print -painters -dpdf -r600 ../Bilder/rechteck_100Hz_15kHz_3kHz_nachabgetastet_frequenzbegrenzung.pdf
   % ohne Axis aufgenommen
-       figure(1);
-       print -painters -dpdf -r600 ../Bilder/rechteck_100Hz_15kHz_keine_frequenzbegrenzung.pdf
-       figure(2);
-       print -painters -dpdf -r600 ../Bilder/rechteck_100Hz_15kHz_3kHz_nachabgetastet_keine_frequenzbegrenzung.pdf
+%        figure(1);
+%        print -painters -dpdf -r600 ../Bilder/rechteck_100Hz_15kHz_keine_frequenzbegrenzung.pdf
+%        figure(2);
+%        print -painters -dpdf -r600 ../Bilder/rechteck_100Hz_15kHz_3kHz_nachabgetastet_keine_frequenzbegrenzung.pdf
     
 
 
