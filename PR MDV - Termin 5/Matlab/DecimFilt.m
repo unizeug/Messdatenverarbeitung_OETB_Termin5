@@ -1,4 +1,4 @@
-function yk=DecimFilt(b_k, x_k, fr)
+function y_k=DecimFilt(b_k, x_k, fr)
 % function yk=DecimFilt(bk, xk, fr)
 % ?????????????????????????????????????
 % filename: DecimFilt.m
@@ -36,7 +36,7 @@ function yk=DecimFilt(b_k, x_k, fr)
  
  %yk = y_k_dezi;
  
- dummy = 0; %initialisiert Puffer
+dummy = 0; %initialisiert Puffer
 N = length(b_k); %bestimmt Filterordnung
 
 %verlaengert das zu filternde Signal

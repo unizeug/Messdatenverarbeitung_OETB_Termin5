@@ -70,7 +70,7 @@ else
     %plot(f_DFT, BetragXf,'-');
     stem(f_DFT,BetragXf,farbe);
 end;
-%AXIS([ xmin xmax ymin ymax]); % allgemeiner aufruf
+AXIS([ xmin xmax ymin ymax]); % allgemeiner aufruf
 %AXIS([-1000 1000 -70 10])%für die Praxisaufgabe  5.x
 %AXIS([-1000 1000 0 1.5])%für die Praxisaufgabe  6.x
 %AXIS([-1000 1000 0 1.5])%für die Vorbereitungsaufgabe 2
