@@ -163,7 +163,12 @@
 		    Nun wurde eine Funktion entworfen, mit der sowohl die digitale Filterung als
 		    auch das Nachabtasten des Signals realisiert wird. Dabei wird nur jeder
 		    fr-ter Wert weiterhin übernommen.\\
-		    \TODO{Die Umsetzung dieser Nachabtastunf in die Filterungintegrieren} \\
+		    Um bei der Dezimierung der Messwerte möglichst viel Zeit
+		    zu sparen, implementierten wir die Funktion so, dass nur jeder fr-te Werte
+		    gefiltert wurde. Dadurch wurde die Nachabtastung zwar während der
+		    Filterung durchgeführt, aber die Verarbeitungszeit der Messwerte wurde
+		    dadurch kürzer als eine vollständige Filterung aller Messwerte und eine darauf folgende
+		    Dezimierung.
 		 
 		  \end{quote}
 		  
