@@ -68,6 +68,6 @@ while i <= length(y_k_neu)
 end
 
 y_k(1:N/fr+1) = [];
-
+y_k = y_k(14:68);%herausschneiden von 2 Perioden
 end
 

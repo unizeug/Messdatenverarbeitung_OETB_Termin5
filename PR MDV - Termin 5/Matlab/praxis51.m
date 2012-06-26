@@ -41,14 +41,9 @@ b_k = getFIRTiefpass( Grenzfrequenz, Abtastperiode, Filterordnung );
 wn = hanning(length(b_k));
 b_k = b_k.*wn';
 
-
-
-
 y_k_gefiltert_undezi = FIRFilterung( b_k, datenu );
 
-%y_k_gefiltert_undezi(1:Filterordnung) = [];
-
-y_k_gefiltert_dezi = zeros(1,floor(length(datenu)/5));
+y_k_gefiltert_dezi = zeros(1,floor(length(y_k_gefiltert_undezi)/5));
 
 i=1;
 n = 1;
@@ -58,10 +53,13 @@ while i <= length(y_k_gefiltert_undezi)
     n= n+1;
     i = i + 5;
 end
+y_k_gefiltert_dezi_gefenstert = y_k_gefiltert_dezi(14:68);
+% figure(88);
+% plot(y_k_gefiltert_dezi_gefenstert);
 
+wn3 = ones(1,length(y_k_gefiltert_dezi_gefenstert));
 
-length(y_k_gefiltert_dezi)
-Spektrum(y_k_gefiltert_dezi, wn2, fs/5,1,'b',-1000,1000,-70,10,4);
+Spektrum(y_k_gefiltert_dezi_gefenstert, wn3, fs/5,1,'b',-1000,1000,-70,10,4);
 
 %% Filtern und nachabtasten 
 
@@ -71,12 +69,31 @@ wn3 = ones(1,length(y_k_alleszusammen));
 
 Spektrum(y_k_alleszusammen, wn3, fs/5,1,'b',-1000,1000,-70,10,5);
 
-figure(22);
-hold on
-plot(datenu);
-plot(y_k_alleszusammen,'r');
-hold off
-
+%% testbereich
+% testvektor = zeros(length(datenu),1);
+% 
+% i=1;
+% n = 1;
+% 
+% while i <= length(datenu)
+%     testvektor(i) = 2;
+%     n= n+1;
+%     i = i + 5;
+% end
+% 
+% figure(22);
+% hold on
+% plot(datenu,'c');
+% plot(y_k_gefiltert_undezi);
+% stem(testvektor,'r');
+% hold off
+% legend('datenu','y k gefiltert undezi','Abtaststellen');
+% 
+% figure(23);
+% hold on
+% plot(y_k_gefiltert_dezi);
+% plot(y_k_alleszusammen,'r');
+% hold off
 
 
 %% Bilder abspeichern
@@ -85,17 +102,15 @@ hold off
 %        print -painters -dpdf -r600 ../Bilder/rechteck_100Hz_15kHz_frequenzbegrenzung.pdf
 %        figure(2);
 %        print -painters -dpdf -r600 ../Bilder/rechteck_100Hz_15kHz_3kHz_nachabgetastet_frequenzbegrenzung.pdf
-  % ohne Axis aufgenommen
+    % ohne Axis aufgenommen
 %        figure(1);
 %        print -painters -dpdf -r600 ../Bilder/rechteck_100Hz_15kHz_keine_frequenzbegrenzung.pdf
 %        figure(2);
-%        print -painters -dpdf -r600 ../Bilder/rechteck_100Hz_15kHz_3kHz_nachabgetastet_keine_frequenzbegrenzung.pdf
-    
+%        print -painters -dpdf -r600
+%        ../Bilder/rechteck_100Hz_15kHz_3kHz_nachabgetastet_keine_frequenzbegrenzung.pdf
 
+%         figure(4);
+%         print -painters -dpdf -r600 ../Bilder/rechteck_100Hz_gefiltert_15kHz_3kHz_nachabgetastet.pdf
+%         figure(5);
+%         print -painters -dpdf -r600 ../Bilder/rechteck_100Hz_decimFilt_15kHz_3kHz_nachabgetastet.pdf
 
-%% testbereich
-
-adadadadad = zeros(1,2^9);
-adadadadad(1) = 1;
-
-ergebnis = FIRFilterung(b_k,adadadadad);

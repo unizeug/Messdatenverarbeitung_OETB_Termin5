@@ -38,14 +38,11 @@ for n=N:1:length(x_k)+N
     dummy = 0;
 end
 
-y_k_neu(1:N+1) = [];
-y_k = y_k_neu;
-length(y_k)
 
-% %kuerzt den Ergebnis-Vektor
-% for n=0:1:length(x_k)-1
-%     y_k(n+1) = y_k_neu(n+2+length(b_k));
-% end 
+
+y_k_neu(1:N+1) = []; % wo entsteht der extra versatz von 46 stellen?
+y_k = y_k_neu;
+
 
 end
 
