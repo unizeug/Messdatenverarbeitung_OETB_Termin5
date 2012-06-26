@@ -471,7 +471,7 @@
     
     \subsection{Auswertung Termin 6}
     \begin{quote}
-    \TODO{Quellcode von termin 6 einfügen. Özgü, welche benutzt du?} \\
+    
         \subsubsection{Amplitudenfrequenzgang des im Microcontroller
         implementierten FIR-Filters}
     	\begin{quote}
@@ -485,11 +485,14 @@
             er bei einer Frequenz von ca. $900 Hz$. Bei $1500 Hz$ dämpft der Tiefpass auf ca. $-25 dB$ und dämpft damit
             leider nicht so stark wie erhofft und erwartet. Auch im weitern Verlauf kann eine großer Abweichung zwischen
             dem gemessenen und dem simulierten Amplitudengang gesehen werden.\\
-            Als Ursache dafür vermuten wir die rundungsfehler, die in jedem der 85 Rechenschritte pro Messwert auftreten
-            und sich zu einem größeren Fehler aufsummieren können. Außerdem ist uns nach Rücksprache mit unserem
-            Tutor aufgefallen, dass wir bei der Messung nicht den gesamten Aussteuerungsbereich verwendet haben. Anstatt der möglichen $14V$ (peak-to-peak) haben wir nur $5V$
-            (peak-to-peak) verwendet. Diese beiden effekte sind unseres Erachtens für diese große Abweichung
-            verantwortlich.
+            Als Ursache dafür vermuten wir die Rundungsfehler, die in jedem der
+            85 Rechenschritte pro Messwert auftreten und sich zu einem größeren Fehler aufsummieren können. 
+            Außerdem ist uns nach Rücksprache mit unserem Tutor aufgefallen,
+            dass wir bei der Messung nicht den gesamten Aussteuerungsbereich verwendet haben.
+            Anstatt der möglichen $14V$ (peak-to-peak) haben wir nur $5V$
+            (peak-to-peak) verwendet.
+            Diese beiden Effekte sind unseres Erachtens für diese große
+            Abweichung verantwortlich.
             
     	\end{quote}
     	
@@ -678,6 +681,29 @@
 	            {./Matlab/DecimFilt.m}
 	    \end{quote}
 	    
+	\end{quote}
+	
+	\subsection{Codes aus Termin 6}
+	\begin{quote}
+	   
+	   \subsubsection{Praxisaufgabe 6}
+	   \begin{quote}
+            \lstinputlisting[
+                caption={Messreihen laden und Spektrum plotten},
+                label=lst:Matlab]
+                {./Matlab/AuswertungTermin6_aufgabe3.m}
+        \end{quote}
+        
+        \subsubsection{Spektrum.m}
+        \begin{quote}
+            \lstinputlisting[
+                caption={Hilfsfunktion Spektrum},
+                label=lst:Matlab]
+                {./Matlab/Spektrum.m}
+        \end{quote}
+        
+        
+        
 	\end{quote}
 \end{quote}
 

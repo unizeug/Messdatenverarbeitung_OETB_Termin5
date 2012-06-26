@@ -1,5 +1,4 @@
-%MDV Praktikum 04 - Fensterung: Theorieaufgaben
-
+%MDV Praktikum 5&6, Spektrum bilden:
 
 function [BetragXf, PhaseXf] = Spektrum(xt, wn, fs, LogFlag,farbe,xmin,xmax,ymin,ymax, fig)
 
@@ -23,7 +22,6 @@ function [BetragXf, PhaseXf] = Spektrum(xt, wn, fs, LogFlag,farbe,xmin,xmax,ymin
 % fs = Abtastfrequenz
 % LogFlag = für Flag=1 ist y-Achse log. in dB dargestellt, sonst 0
 
-    
 %Multiplikation des Zeitsignals und des Fensters
 ergebnis1 = xt.*wn;             
 
@@ -38,7 +36,6 @@ BetragXf = abs(ergebnis2)/N2;
 %Phasenspektrum
 PhaseXf = unwrap(angle(ergebnis2)/N2);
 
-
 %Zeitachse
 t = 0 :1/fs : (N-1)/fs;
 length(t)
@@ -48,7 +45,6 @@ length(t)
 f_DFT = (-N/2:N/2-1)*fs/N;
 %ceil bzw floor als Lösung
 %neues Fenster zur Darstellung
-%clf(fig);
 figure(fig);
 %Darstellung des Zeitsignals
 subplot(3,1,1);
