@@ -187,10 +187,10 @@
 	
 	\end{quote}%Ende Vorbereitungsaufgaben Termin 5
 	
-	
-    \subsection{Vorbereitungsaufgaben zu Termin 6}
-    \begin{quote}
     	
+        \subsection{Vorbereitungsaufgaben zu Termin 6}
+        \begin{quote}
+        	
     	Nachdem wir uns mit dem vorgegebenen Tutorial über Fix-Point Arithmetic in
     	C beschäftigt hatten, sollten folgende Aufgaben zur Vorbereitung des 6.
     	Termins angefertigt werden.
@@ -222,14 +222,16 @@
 		\begin{quote}
 		
 		Die im vergangenem Praktikum eingestezten Filterkoeffizienten sollten nun in
-		das Q($0,15$) umgewandelt werden. Dazu haben wir die Koeffizienten, die als Floating Point Zahlen vorhanden waren mit
-		dem Faktor $2^{15}$ multipliziert und als 16 Bit Integer abgespeichert.\\ 
+		das Q($0,15$) umgewandelt werden. Dazu haben wir die Koeffizienten, die als Floating Point Zahlen 
+		vorhanden waren mit dem Faktor $2^{15}$ multipliziert und als 16 Bit Integer
+		abgespeichert.\\
 		Anschließend verwendeten wir die Funktion exportCoeff() aus der Code-Vorgabe,
 		um die umgewandelten Koeffizienten in eine C-Header Datei filter\_coeff.h zu
 		exportieren. Danach wurde mit dieser Datei die gleichnamige Datei aus dem
 		AVRStudio-Projekt ersetzt und die von uns gewählte Ordnungszahl im Header
-		filter.h in die Konstante FILTER\_ORD eingesetzt. Auf diese Weise implementieren den von uns entworfenen Digitalen
-		Filter auf dem Mikrocontroller.
+		filter.h in die Konstante FILTER\_ORD eingesetzt. Auf diese Weise
+		implementieren wir den von uns entworfenen Digitalen Filter auf dem
+		Mikrocontroller.
 		
 		\end{quote}
 		
@@ -248,9 +250,11 @@
             fifoPopWord(&filtInBuf, &val);\\
             fifoPopWord(&filtInBuf, &val);\\
 		
-		Wie in der ersten Vorbereitungsaufgabe beschrieben filtert die Funktion filterFIR den ersten Eintrag des gemessenen
-		Signals und löscht anschließend den Messwert. Anschließend werden die auch die folgenden 4 Messwerte gelöscht. Auf
-		diese werden nur $\frac{1}{5}$ der Messwerte gefiltert und das gesamte Signal nachabgetastet.
+		Wie in der ersten Vorbereitungsaufgabe beschrieben, filtert die Funktion
+		filterFIR den ersten Eintrag des gemessenen Signals und löscht anschließend den Messwert. 
+		Anschließend werden auch die folgenden 4 Messwerte gelöscht. Auf
+		diese Weise werden nur $\frac{1}{5}$ der Messwerte gefiltert und das gesamte
+		Signal nachabgetastet.
 		
 		\end{quote}
 	
