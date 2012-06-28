@@ -406,7 +406,7 @@
 \begin{quote}
 	\subsection{Auswertung Termin 5}
     \begin{quote}
-        \subsubsection{Auswirkung von Dezimation}
+        \subsubsection{Dezimation von gemessenen Signalen}
 		\begin{quote}
 			Es wird ein $110Hz$ Rechteck aufgenommen. Die Abtastrate beträgt $15kHz$. um Allaising zu
             vermeiden, wurde ein Antiallaisingfilter ("die blaue Box") verwendet. Anschließend wird das
@@ -449,7 +449,8 @@
             \end{figure}
         
             Das Spektrum des nicht nachabgetasteten Signals verläuft bis ca. $7,5kHz$. Allerdings sind die
-            Frequenzanteile in diesen Bereichen so minimal, dass sie in Messfehlern untergehen und keine Aussagekraft haben. Dennoch belegen sie Speicher.\\
+            Frequenzanteile in diesen Bereichen so minimal, dass sie in Messfehlern untergehen und keine 
+            Aussagekraft haben. Dennoch belegen sie Speicher.\\
             Diese Spektrallinien können vernachlässigt werden. Daher wird das Signal nachabgetastet.
             
             \begin{figure}[H]
@@ -459,22 +460,64 @@
                     \caption{gesamtes Spektrum des nachabgetasteten Signals}
             \end{figure}
         
-            Das Spektrum des Nachabgetasteten Signals hat zwischen den einzelnen Spektrallinien den gleichen Abstand wie das Spektrum des 
-            unbearbeiteten Signals. Allerdings fehlen die höheren Frequenzen, da diese nun nicht mehr mit einer Abtastfrequenz erfasst werden 
-            können, die geringer ist als sie selbst. Daher ist das Spektrum des nachabgetasteten Signals nun schmaler als die des ursprünglichen 
+            Das Spektrum des Nachabgetasteten Signals hat zwischen den einzelnen Spektrallinien den gleichen 
+            Abstand wie das Spektrum des unbearbeiteten Signals. Allerdings fehlen die höheren Frequenzen, 
+            da diese nun nicht mehr mit einer Abtastfrequenz erfasst werden können, die geringer ist als 
+            sie selbst. Daher ist das Spektrum des nachabgetasteten Signals nun schmaler als die des ursprünglichen 
             Messsignals.\\
         
-            Da die wichtigen Spektrallinien im Bereich bis $1kHz$ liegen wird nun dieser Bereich betrachtet. In der
-            Nachansicht des Spektrums fällt auf, das der Oberwellenanteil im Spektrum leicht gestiegen ist.\\
-            Diese Frequenzanteile entstehen durch die Nachabtastung. Bei der Nachabtastung des $7,5kHz$ Signals, wird
-            das Signal mit einer Frequenz von $3kHz$ abgetastet. Dadurch kommt es zu Allaising. Dies ist aber nicht von
-            Bedeutung, da diese Frequenzanteile sehr gering sind. Die Verfälschung des Spektrums ist sehr klein.
-			
-		\end{quote} % Ende Subsubsection Aufgabe 5.1
-		
-		\TODO{Auswertung 5.3 einfügen --> Timo schreibt was} \\
-		\TODO{Auswertung 5.4 einfügen --> Timo schreibt was} \\
-		
+            Da die wichtigen Spektrallinien im Bereich bis $1kHz$ liegen wird nun dieser Bereich betrachtet. 
+            In der Nachansicht des Spektrums fällt auf, das der Oberwellenanteil
+            im Spektrum leicht gestiegen ist.\\
+            Diese Frequenzanteile entstehen durch die Nachabtastung. Bei der Nachabtastung des 7,5kHz Signals, 
+            wird das Signal mit einer Frequenz von 3kHz abgetastet. Dadurch
+            kommt es zu Allaising.\\
+        
+        \end{quote}
+        
+        \subsubsection{Verhinderung von Allaising}
+        \begin{quote}
+        
+            Um kein Allaising durch Nachabtastung zu verursachen, müssen vor der Nachabtastung die Frequenzanteile, 
+            die zu hoch sind, aus dem gemessenen Signal entfernt werden. Dies kann durch
+            digitale Filterung geschehen.\\
+        
+            Nun wird das mit 15kHz abgetastete Signal vor der Nachabtastung gefiltert. Die Grenzfrequenz des 
+            digitalen Filters liegt bei 1kHz. Die Nachabtastung erfolgt mit 3kHz. Dadurch kann es nun nicht mehr 
+            zu Allaising kommen. 
+        
+            \begin{figure}[htb]
+                \centering
+                \includegraphics[width=1\textwidth]{rechteck_100Hz_gefiltert_15kHz_3kHz_nachabgetastet.pdf}
+                \caption{digital gefiltertes und anschließend dezimiertes Signal}
+            \end{figure}    
+            
+            Durch den Filter kann es nun nicht mehr zu Allaising kommen. Allerdings benötigt der Filter viel Zeit um sich 
+            einzuschwingen. Selbst im eingeschwungenen Zustand gehen viele Details verloren.
+            Das ist auch im Spektrum bemerkbar. Wirklich deutlich tritt nur noch die Grundschwingung des Rechtecks hervor. 
+            Alle anderen Frequenzanteile werden sehr stark gedämpft. Die Messung
+            ist nicht mehr aussagekräftig.\\
+        
+        \end{quote}
+        
+        \subsubsection{Optimierung der Nachabtastung}
+        \begin{quote}
+        
+            Die digitale Filterung ist sehr Rechenintensiv. Bei der Dezimation werden die meisten Messwerte aber sofort 
+            wieder verworfen. Filterung und Dezimation lassen sich kombinieren und dadurch viel Rechenzeit sparen. 
+            In der Funktion DecimFilt() wird nur jeder 5te Messwert überhaupt
+            gefiltert. Dadurch wird viel Rechenzeit gespart. Das Ergebnis unterscheidet sich nicht von einer digitalen Filterung mit 
+            anschließender Nachabtastung. Abweichungen sind durch den
+            unterschiedlichen Anschnitt des Rechtecks bedingt.\\
+            
+            \begin{figure}[htb]
+                \centering
+                \includegraphics[width=1\textwidth]{rechteck_100Hz_decimFilt_15kHz_3kHz_nachabgetastet.pdf}
+                \caption{Signal das mit DecimFilt() gefiltert und dezimiert wurde}
+            \end{figure}    
+    
+		\end{quote} % Ende Subsubsection Aufgabe 5.4
+
     \end{quote}  % Ende Subsection Auswertung Termin 5
     
     \subsection{Auswertung Termin 6}
